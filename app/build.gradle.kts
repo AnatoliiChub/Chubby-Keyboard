@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tremorkeyboard"
+    namespace = "com.example.chubbykeyboard"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.tremorkeyboard"
+        applicationId = "com.example.chubbykeyboard"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.service)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

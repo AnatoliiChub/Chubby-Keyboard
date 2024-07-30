@@ -1,4 +1,4 @@
-package com.example.tremorkeyboard.ui.theme
+package com.example.chubbykeyboard.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

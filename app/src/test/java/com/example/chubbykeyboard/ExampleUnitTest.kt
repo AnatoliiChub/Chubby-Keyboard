@@ -1,4 +1,4 @@
-package com.example.tremorkeyboard
+package com.example.chubbykeyboard
 
 import org.junit.Test
 

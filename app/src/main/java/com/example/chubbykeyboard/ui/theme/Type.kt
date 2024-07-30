@@ -1,4 +1,4 @@
-package com.example.tremorkeyboard.ui.theme
+package com.example.chubbykeyboard.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
