@@ -169,6 +169,3 @@ private fun onPrintedKeyPressed(
         letter.length
     )
 }
-
-
-

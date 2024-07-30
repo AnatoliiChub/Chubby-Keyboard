@@ -44,8 +44,3 @@ fun Configuration.screenSize(): ScreenSize{
     val screenHeight = configuration.screenHeightDp * density
     return ScreenSize(screenWidth.toInt(), screenHeight.toInt())
 }
-
-
-
-
-
