@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
 
 // TODO: To be removed
@@ -24,8 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ChubbyKeyboardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    InputField(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -35,7 +33,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun InputField(modifier: Modifier = Modifier) {
     val text = rememberSaveable { mutableStateOf("") }
     TextField(
         value = text.value,
@@ -43,12 +41,4 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         label = { Text("Enter your name") },
         modifier = modifier
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ChubbyKeyboardTheme {
-        Greeting("Android")
-    }
 }
