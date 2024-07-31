@@ -29,7 +29,7 @@ fun AlternativeLetter(
     val bounds = remember {
         mutableStateOf(Rect(0f, 0f, 0f, 0f))
     }
-    // TODO: FIX OFFSET ISSUE FOR SELECTING FEATURE
+
     val selected = bounds.value.contains(dragGesturePosition)
     if (selected) {
         onSelected.invoke()
