@@ -1,6 +1,5 @@
-package com.example.chubbykeyboard.view.popup
+package com.chubbykeyboard.view.popup
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.wrapContentSize
@@ -16,8 +15,9 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.window.Popup
-import com.example.chubbykeyboard.view.model.PrintedKey
-import com.example.chubbykeyboard.view.screenSize
+import com.chubbykeyboard.view.model.PrintedKey
+import com.chubbykeyboard.view.popup.positioinprovider.TrackablePositionProvider
+import com.chubbykeyboard.view.screenSize
 
 @Composable
 fun AlternativeLetterPopup(
@@ -30,7 +30,6 @@ fun AlternativeLetterPopup(
         mutableStateOf(IntOffset.Zero)
     }
 
-
     val verticalOffset = -48
 
     Popup(
@@ -40,9 +39,6 @@ fun AlternativeLetterPopup(
             screenSize = LocalConfiguration.current.screenSize(),
             onPopupPositionChanged = {
                 popupOffset.value = it
-
-                Log.d("Popup", "popup position changed: $it")
-                Log.d("Popup", "root button position : $buttonOffset")
             },
         )
     ) {
@@ -57,7 +53,7 @@ fun AlternativeLetterPopup(
             keys.map { it.displayedSymbol }.forEach { letter ->
                 AlternativeLetter(
                     letter,
-                    Offset(dragGesturePosition.value.x, dragGesturePosition.value.y - verticalOffset),
+                    Offset(dragGesturePosition.value.x, dragGesturePosition.value.y),
                     IntOffset(
                         buttonOffset.value.x.toInt() - popupOffset.value.x,
                         buttonOffset.value.y.toInt() - popupOffset.value.y

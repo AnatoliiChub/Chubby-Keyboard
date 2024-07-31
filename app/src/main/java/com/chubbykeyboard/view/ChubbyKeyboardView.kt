@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard.view
+package com.chubbykeyboard.view
 
 import android.content.Context
 import androidx.compose.runtime.Composable

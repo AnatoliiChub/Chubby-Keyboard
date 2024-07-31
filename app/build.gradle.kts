@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.chubbykeyboard"
+    namespace = "com.chubbykeyboard"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.chubbykeyboard"
+        applicationId = "com.chubbykeyboard"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

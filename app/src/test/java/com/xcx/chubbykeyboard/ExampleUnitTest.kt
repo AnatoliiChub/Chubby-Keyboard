@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard
+package com.xcx.chubbykeyboard
 
 import org.junit.Test
 

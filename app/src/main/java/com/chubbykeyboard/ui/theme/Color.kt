@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard.ui.theme
+package com.chubbykeyboard.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

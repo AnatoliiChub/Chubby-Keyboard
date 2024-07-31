@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard.view
+package com.chubbykeyboard.view
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -26,11 +26,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.chubbykeyboard.ChubbyIMEService
-import com.example.chubbykeyboard.view.model.FunctionalKey
-import com.example.chubbykeyboard.view.model.Key
-import com.example.chubbykeyboard.view.model.PrintedKey
-import com.example.chubbykeyboard.view.popup.AlternativeLetterPopup
+import com.chubbykeyboard.ChubbyIMEService
+import com.chubbykeyboard.view.model.FunctionalKey
+import com.chubbykeyboard.view.model.Key
+import com.chubbykeyboard.view.model.PrintedKey
+import com.chubbykeyboard.view.popup.AlternativeLetterPopup
 import java.util.Locale
 
 @Composable

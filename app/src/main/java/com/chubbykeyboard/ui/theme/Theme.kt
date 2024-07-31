@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard.ui.theme
+package com.chubbykeyboard.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

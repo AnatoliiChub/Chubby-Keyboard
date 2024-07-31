@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard.view.popup
+package com.chubbykeyboard.view.popup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -38,7 +38,7 @@ fun AlternativeLetter(
         modifier = Modifier
             .background(if (selected) Color.Red else Color.LightGray)
             .onGloballyPositioned {
-                val offset = it.localToWindow(Offset.Zero)
+                val offset = it.localToWindow(Zero)
                 bounds.value = Rect(
                     offset.x - popupOffset.x,
                     offset.y - popupOffset.y,

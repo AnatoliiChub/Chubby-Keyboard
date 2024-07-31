@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard.view.model
+package com.chubbykeyboard.view.model
 
 sealed class Key {
     abstract val displayedSymbol: String

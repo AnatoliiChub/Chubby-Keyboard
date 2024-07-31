@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard.view
+package com.chubbykeyboard.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -13,8 +13,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.chubbykeyboard.view.model.FunctionalKey
-import com.example.chubbykeyboard.view.model.PrintedKey
+import com.chubbykeyboard.view.model.FunctionalKey
+import com.chubbykeyboard.view.model.PrintedKey
 
 @Composable
 fun ChubbyKeyboard() {

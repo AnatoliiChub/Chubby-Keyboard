@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard.view
+package com.chubbykeyboard.view
 
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import com.example.chubbykeyboard.view.model.ScreenSize
+import com.chubbykeyboard.view.model.ScreenSize
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -37,7 +37,7 @@ fun Modifier.debounceCombinedClickable(
 }
 
 @Composable
-fun Configuration.screenSize(): ScreenSize{
+fun Configuration.screenSize(): ScreenSize {
     val configuration = LocalConfiguration.current
     val density = LocalContext.current.resources.displayMetrics.density
     val screenWidth = configuration.screenWidthDp * density

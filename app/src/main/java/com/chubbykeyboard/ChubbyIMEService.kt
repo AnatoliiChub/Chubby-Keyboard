@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard
+package com.chubbykeyboard
 
 import android.inputmethodservice.InputMethodService
 import android.view.View
@@ -14,7 +14,7 @@ import androidx.savedstate.SavedStateRegistry
 import androidx.savedstate.SavedStateRegistryController
 import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
-import com.example.chubbykeyboard.view.ChubbyKeyboardView
+import com.chubbykeyboard.view.ChubbyKeyboardView
 
 class ChubbyIMEService : InputMethodService(), LifecycleOwner, ViewModelStoreOwner, SavedStateRegistryOwner {
 

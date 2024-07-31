@@ -1,4 +1,4 @@
-package com.example.chubbykeyboard
+package com.chubbykeyboard
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import com.example.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
+import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
 
 // TODO: To be removed
 class MainActivity : ComponentActivity() {
