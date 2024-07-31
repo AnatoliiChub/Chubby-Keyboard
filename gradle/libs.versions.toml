@@ -38,6 +38,5 @@ androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-s
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-dagger-hilt-android-plugin = { id = "dagger.hilt.android.plugin", version.ref = "daggerHilt" }
 
 
