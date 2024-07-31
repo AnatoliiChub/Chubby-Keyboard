@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.ChubbyIMEService
+import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
 import com.chubbykeyboard.view.model.FunctionalKey
 import com.chubbykeyboard.view.model.Key
 import com.chubbykeyboard.view.model.PrintedKey
@@ -44,7 +45,7 @@ fun RowScope.KeyButton(
     val pressed = interactionSource.collectIsPressedAsState()
     val longPressed = remember { mutableStateOf(false) }
     val rootPosition = remember { mutableStateOf(Zero) }
-    val selectedPromptLetter = remember { mutableStateOf("") }
+    val selectedPromptLetter = remember { mutableStateOf(NO_INPUT) }
     val ctx = LocalContext.current
 
     launchShiftState(key, isShiftedParam)
@@ -95,7 +96,7 @@ fun RowScope.KeyButton(
             text = key.displayedSymbol,
             fontSize = 24.sp
         )
-        if (pressed.value and longPressed.value) {
+        if (key is PrintedKey.Letter && pressed.value && longPressed.value) {
             //todo: fix hardcoded values
             val hardCodedLetters =
                 listOf("q", "w", "e").map { PrintedKey.Letter(it) }.onEach { it.setCapital(isShiftedParam) }
@@ -105,7 +106,7 @@ fun RowScope.KeyButton(
             })
 
         } else {
-            if (longPressed.value && selectedPromptLetter.value.isNotEmpty()) {
+            if (longPressed.value && selectedPromptLetter.value != NO_INPUT) {
                 onPrintedKeyPressed(ctx, selectedPromptLetter.value, isShiftedParam)
             }
             longPressed.value = false

@@ -15,7 +15,6 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -23,13 +22,12 @@ import androidx.compose.ui.unit.sp
 fun AlternativeLetter(
     letter: String,
     dragGesturePosition: Offset = Zero,
-    popupOffset: IntOffset,
+    popupOffset: Offset,
     onSelected: () -> Unit
 ) {
     val bounds = remember {
         mutableStateOf(Rect(0f, 0f, 0f, 0f))
     }
-
     val selected = bounds.value.contains(dragGesturePosition)
     if (selected) {
         onSelected.invoke()
