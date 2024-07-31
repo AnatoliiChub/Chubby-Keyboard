@@ -17,7 +17,7 @@ import androidx.compose.ui.window.Popup
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
 import com.chubbykeyboard.view.model.PrintedKey
 import com.chubbykeyboard.view.popup.positioinprovider.TrackablePositionProvider
-import com.chubbykeyboard.view.screenSize
+import com.chubbykeyboard.screenSize
 
 @Composable
 fun AlternativeLetterPopup(

@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
+import com.chubbykeyboard.debounceCombinedClickable
 import com.chubbykeyboard.view.model.FunctionalKey
 import com.chubbykeyboard.view.model.Key
 import com.chubbykeyboard.view.model.PrintedKey
