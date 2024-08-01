@@ -3,6 +3,7 @@ package com.chubbykeyboard
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Indication
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.Composable
@@ -33,6 +34,25 @@ fun Modifier.debounceCombinedClickable(
             lastClickTime = currentTime
             onClick()
         }, onLongClick = onLongClick)
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun Modifier.debounceClickable(
+    interactionSource: MutableInteractionSource,
+    indication: Indication? = null,
+    debounceInterval: Long = 350,
+    onClick: () -> Unit,
+): Modifier {
+    var lastClickTime by remember { mutableLongStateOf(0L) }
+    return this.composed {
+        Modifier.clickable(interactionSource = interactionSource, indication = indication, onClick = {
+            val currentTime = System.currentTimeMillis()
+            if ((currentTime - lastClickTime) < debounceInterval) return@clickable
+            lastClickTime = currentTime
+            onClick()
+        })
     }
 }
 

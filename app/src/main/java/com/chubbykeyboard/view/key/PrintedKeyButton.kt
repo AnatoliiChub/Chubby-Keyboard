@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view
+package com.chubbykeyboard.view.key
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -29,17 +29,13 @@ import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
 import com.chubbykeyboard.debounceCombinedClickable
-import com.chubbykeyboard.view.model.FunctionalKey
-import com.chubbykeyboard.view.model.Key
-import com.chubbykeyboard.view.model.PrintedKey
 import com.chubbykeyboard.view.popup.AlternativeLetterPopup
 import java.util.Locale
 
 @Composable
-fun RowScope.KeyButton(
-    key: Key,
+fun RowScope.PrintedKeyButton(
+    key: PrintedKey,
     isShiftedParam: Boolean,
-    onShiftPressed: () -> Boolean,
 ) {
     val dragGesturePosition = remember { mutableStateOf(Zero) }
     val interactionSource = remember { MutableInteractionSource() }
@@ -48,37 +44,19 @@ fun RowScope.KeyButton(
     val rootPosition = remember { mutableStateOf(Zero) }
     val selectedPromptLetter = remember { mutableStateOf(NO_INPUT) }
     val ctx = LocalContext.current
-
-    launchShiftState(key, isShiftedParam)
+    if (key is PrintedKey.Letter) {
+        key.setCapital(isShiftedParam)
+    }
 
     Box(
         modifier = Modifier
             .fillMaxHeight()
-            .weight(
-                if (key is PrintedKey.Letter) {
-                    if (pressed.value) 1.5f else 1f
-                } else 2f
-            )
+            .weight(if (pressed.value) 1.5f else 1f)
             .debounceCombinedClickable(
                 interactionSource = interactionSource,
                 indication = rememberRipple(true),
-                onLongClick = {
-                    longPressed.value = true
-                },
-                onClick = {
-                    when (key) {
-                        is FunctionalKey.Shift -> onShiftPressed.invoke()
-                        FunctionalKey.Backspace -> onBackspacePressed(ctx)
-                        FunctionalKey.Enter -> onEnterPressed(ctx)
-                        FunctionalKey.ToNumber -> {
-                            // TODO: Switch to number keyboard
-                        }
-
-                        is PrintedKey -> {
-                            onPrintedKeyPressed(ctx, key.printedSymbol, isShiftedParam)
-                        }
-                    }
-                })
+                onLongClick = { longPressed.value = true },
+                onClick = { onPrintedKeyPressed(ctx, key.printedSymbol, isShiftedParam) })
             .pointerInput(Unit) {
                 detectDragGesturesAfterLongPress { change, _ ->
                     dragGesturePosition.value = change.position
@@ -86,7 +64,7 @@ fun RowScope.KeyButton(
             }
             .onGloballyPositioned { rootPosition.value = it.localToRoot(Zero) }
             .background(
-                brush = provideKeyBrush(key, pressed),
+                brush = keyBrush(pressed),
                 shape = RoundedCornerShape(15.dp)
             ),
         contentAlignment = Alignment.Center
@@ -97,7 +75,7 @@ fun RowScope.KeyButton(
             text = key.displayedSymbol,
             fontSize = 24.sp
         )
-        if (key is PrintedKey.Letter && pressed.value && longPressed.value) {
+        if (pressed.value && longPressed.value) {
             //todo: fix hardcoded values
             val hardCodedLetters =
                 listOf("q", "w", "e").map { PrintedKey.Letter(it) }.onEach { it.setCapital(isShiftedParam) }
@@ -115,51 +93,18 @@ fun RowScope.KeyButton(
     }
 }
 
-private fun launchShiftState(key: Key, isShiftedParam: Boolean) {
-    when (key) {
-        is PrintedKey.Letter -> {
-            key.setCapital(isShiftedParam)
-        }
-
-        is FunctionalKey.Shift -> {
-            key.updateShift(isShiftedParam)
-        }
-
-        else -> {}
-    }
-}
-
 @Composable
-private fun provideKeyBrush(
-    key: Key,
+private fun keyBrush(
     pressed: State<Boolean>
 ) = Brush.horizontalGradient(
-    if (key is PrintedKey.Letter) {
-        if (pressed.value) listOf(
-            Color.White,
-            Color.LightGray
-        ) else listOf(
-            Color.White,
-            Color.White
-        )
-    } else {
-        if (pressed.value) listOf(
-            Color.LightGray,
-            Color.DarkGray
-        ) else listOf(
-            Color.White,
-            Color.LightGray
-        )
-    }
+    if (pressed.value) listOf(
+        Color.White,
+        Color.LightGray
+    ) else listOf(
+        Color.White,
+        Color.White
+    )
 )
-
-private fun onEnterPressed(ctx: Context) {
-    (ctx as ChubbyIMEService).sendKeyChar('\n')
-}
-
-private fun onBackspacePressed(ctx: Context) {
-    (ctx as ChubbyIMEService).currentInputConnection.deleteSurroundingText(1, 0)
-}
 
 private fun onPrintedKeyPressed(
     ctx: Context,

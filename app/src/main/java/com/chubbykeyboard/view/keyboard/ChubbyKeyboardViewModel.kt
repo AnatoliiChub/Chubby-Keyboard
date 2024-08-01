@@ -1,9 +1,9 @@
 package com.chubbykeyboard.view.keyboard
 
 import androidx.lifecycle.ViewModel
-import com.chubbykeyboard.view.model.FunctionalKey
-import com.chubbykeyboard.view.model.Key
-import com.chubbykeyboard.view.model.PrintedKey
+import com.chubbykeyboard.view.key.FunctionalKey
+import com.chubbykeyboard.view.key.Key
+import com.chubbykeyboard.view.key.PrintedKey
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,7 +19,7 @@ class ChubbyKeyboardViewModel @Inject constructor() : ViewModel() {
             arrayOf("q", "w", "e", "r", "t", "y", "u", "i", "o", "p").map { PrintedKey.Letter(it) }.toTypedArray(),
             arrayOf("a", "s", "d", "f", "g", "h", "j", "k", "l").map { PrintedKey.Letter(it) }.toTypedArray(),
             arrayOf(
-                FunctionalKey.Shift,
+                FunctionalKey.CapsLock,
                 PrintedKey.Letter("z"),
                 PrintedKey.Letter("x"),
                 PrintedKey.Letter("c"),
@@ -30,10 +30,11 @@ class ChubbyKeyboardViewModel @Inject constructor() : ViewModel() {
                 FunctionalKey.Backspace
             ),
             arrayOf(
-                FunctionalKey.ToNumber,
-                PrintedKey.Letter(","),
-                PrintedKey.Space,
-                PrintedKey.Letter("."),
+                FunctionalKey.ToSymbols,
+                PrintedKey.Symbol(","),
+                FunctionalKey.SwitchLanguage,
+                FunctionalKey.Space,
+                PrintedKey.Symbol("."),
                 FunctionalKey.Enter
             )
         )
