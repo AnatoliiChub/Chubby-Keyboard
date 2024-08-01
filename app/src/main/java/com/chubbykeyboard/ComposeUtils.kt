@@ -37,7 +37,6 @@ fun Modifier.debounceCombinedClickable(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Modifier.debounceClickable(
     interactionSource: MutableInteractionSource,
@@ -64,3 +63,5 @@ fun Configuration.screenSize(): ScreenSize {
     val screenHeight = configuration.screenHeightDp * density
     return ScreenSize(screenWidth.toInt(), screenHeight.toInt())
 }
+
+

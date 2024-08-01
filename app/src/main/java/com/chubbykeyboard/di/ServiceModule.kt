@@ -1,0 +1,28 @@
+package com.chubbykeyboard.di
+
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
+import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
+import com.chubbykeyboard.domain.SwitchLanguageUseCase
+import com.chubbykeyboard.view.keyboard.ChubbyKeyboardViewModel
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ServiceComponent
+
+@Module(includes = [DataModule::class])
+@InstallIn(ServiceComponent::class)
+object ServiceModule {
+
+    @Provides
+    fun provideChubbyKeyboardViewModelFactory(
+        provideKeyMatrixUseCase: ProvideKeyMatrixUseCase,
+        switchLanguageUseCase: SwitchLanguageUseCase,
+        getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase
+    ) = viewModelFactory {
+        initializer {
+            ChubbyKeyboardViewModel(provideKeyMatrixUseCase, switchLanguageUseCase, getCurrentSupportedLocaleUseCase)
+        }
+    }
+}

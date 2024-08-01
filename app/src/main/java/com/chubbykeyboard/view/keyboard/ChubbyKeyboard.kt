@@ -1,5 +1,6 @@
 package com.chubbykeyboard.view.keyboard
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,15 +8,22 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.ChubbyIMEService
-import com.chubbykeyboard.view.key.FunctionalKey
+import com.chubbykeyboard.ui.theme.BackgroundColor
+import com.chubbykeyboard.view.key.FunctionalKey.Backspace
+import com.chubbykeyboard.view.key.FunctionalKey.CapsLock
+import com.chubbykeyboard.view.key.FunctionalKey.Enter
+import com.chubbykeyboard.view.key.FunctionalKey.Space
+import com.chubbykeyboard.view.key.FunctionalKey.SwitchLanguage
+import com.chubbykeyboard.view.key.FunctionalKey.ToSymbols
 import com.chubbykeyboard.view.key.PrintedKey
 import com.chubbykeyboard.view.key.PrintedKeyButton
 import com.chubbykeyboard.view.key.functional.BackSpaceButton
@@ -27,23 +35,45 @@ import com.chubbykeyboard.view.key.functional.ToSymbolsButton
 
 @Composable
 fun ChubbyKeyboard(
-    viewModel: ChubbyKeyboardViewModel = hiltViewModel()
+    viewModel: ChubbyKeyboardViewModel
 ) {
     val state = viewModel.uiState.collectAsStateWithLifecycle()
-    val isCapsLock = state.value.isCapsLockActive
-    val service = (LocalContext.current as ChubbyIMEService)
+    when (state.value) {
 
+        KeyBoardState.Loading -> Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(288.dp)
+                .padding(32.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator(modifier = Modifier.size(96.dp))
+        }
+
+        is KeyBoardState.Content -> Keyboard(
+            state.value as KeyBoardState.Content,
+            onCapsLockPressed = viewModel::onCapsLockPressed,
+            onSwitchLangPressed = viewModel::switchLanguage
+        )
+
+    }
+}
+
+@Composable
+private fun Keyboard(state: KeyBoardState.Content, onCapsLockPressed: () -> Unit, onSwitchLangPressed: () -> Unit) {
+    val isCapsLock = state.isCapsLockActive
+    val service = (LocalContext.current as ChubbyIMEService)
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 48.dp)
-            .background(Color.White)
+            .background(BackgroundColor)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            state.value.keyMatrix.forEach { row ->
+            state.keyMatrix.forEach { row ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -52,29 +82,21 @@ fun ChubbyKeyboard(
                     row.forEach { key ->
                         when (key) {
                             is PrintedKey -> PrintedKeyButton(key, isCapsLock)
-                            is FunctionalKey.CapsLock -> CapsLockButton(key, isCapsLock) {
-                                viewModel.onCapsLockPressed()
-                            }
+                            is CapsLock -> CapsLockButton(key, isCapsLock) { onCapsLockPressed() }
 
-                            is FunctionalKey.Backspace -> BackSpaceButton(key) {
+                            is Backspace -> BackSpaceButton(key) {
                                 service.currentInputConnection.deleteSurroundingText(1, 0)
                             }
 
-                            is FunctionalKey.Enter -> EnterButton(key) {
-                                service.sendKeyChar('\n')
-                            }
+                            is Enter -> EnterButton(key) { service.sendKeyChar('\n') }
 
-                            is FunctionalKey.ToSymbols -> ToSymbolsButton(key) {
+                            is ToSymbols -> ToSymbolsButton(key) {
                                 // TODO: Switch to symbols keyboard
                             }
 
-                            is FunctionalKey.SwitchLanguage -> SwitchLanguageButton(key) {
-                                // TODO: Switch to next language
-                            }
+                            is SwitchLanguage -> SwitchLanguageButton(key) { onSwitchLangPressed() }
 
-                            is FunctionalKey.Space -> SpaceButton(key) {
-                                service.sendKeyChar(' ')
-                            }
+                            is Space -> SpaceButton(key) { service.sendKeyChar(' ') }
                         }
                     }
                 }

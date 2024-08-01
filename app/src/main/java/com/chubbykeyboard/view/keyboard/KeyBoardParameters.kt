@@ -11,11 +11,16 @@ enum class KeyboardType {
 
 data class KeyBoardParameters(
     val isCapsLockActive: Boolean,
-    val currentLocal: Locale,
+    val currentLocale: Locale,
     val keyboardType: KeyboardType
 )
 
-data class KeyBoardState(
-    val isCapsLockActive: Boolean,
-    val keyMatrix : Array<Array<Key>>
-)
+sealed class KeyBoardState {
+
+    data object Loading : KeyBoardState()
+
+    data class Content(
+        val isCapsLockActive: Boolean,
+        val keyMatrix: List<List<Key>>
+    ) : KeyBoardState()
+}

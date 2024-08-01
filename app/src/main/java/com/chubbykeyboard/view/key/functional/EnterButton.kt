@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.sp
+import com.chubbykeyboard.ui.theme.EnterKeyBrush
 import com.chubbykeyboard.view.key.FunctionalKey
 
 @Composable
@@ -16,5 +17,6 @@ fun RowScope.EnterButton(
         fontSize = 36.sp,
         fontWeight = Bold,
         onClick = onPress,
+        backgroundBrushProvider = EnterKeyBrush
     )
 }

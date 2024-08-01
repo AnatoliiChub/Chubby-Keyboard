@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -12,11 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Offset.Companion.Zero
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chubbykeyboard.ui.theme.AlternativeLetterKeyBrush
 
 @Composable
 fun AlternativeLetter(
@@ -34,7 +35,10 @@ fun AlternativeLetter(
     }
     Box(
         modifier = Modifier
-            .background(if (selected) Color.Red else Color.LightGray)
+            .background(
+                brush = AlternativeLetterKeyBrush.invoke(selected),
+                shape = CircleShape
+            )
             .onGloballyPositioned {
                 val offset = it.localToWindow(Zero)
                 bounds.value = Rect(
@@ -48,8 +52,8 @@ fun AlternativeLetter(
         Text(
             maxLines = 1,
             modifier = Modifier
-                .padding(8.dp)
-                .size(32.dp),
+                .padding(6.dp)
+                .size(40.dp),
             textAlign = TextAlign.Center,
             text = letter,
             fontSize = 24.sp

@@ -6,6 +6,7 @@ import androidx.annotation.CallSuper
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ServiceLifecycleDispatcher
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.setViewTreeLifecycleOwner
@@ -15,8 +16,19 @@ import androidx.savedstate.SavedStateRegistryController
 import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import com.chubbykeyboard.view.keyboard.ChubbyKeyboardView
+import com.chubbykeyboard.view.keyboard.ChubbyKeyboardViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ChubbyIMEService : InputMethodService(), LifecycleOwner, ViewModelStoreOwner, SavedStateRegistryOwner {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)[ChubbyKeyboardViewModel::class.java]
+    }
 
     override val viewModelStore: ViewModelStore
         get() = store
@@ -32,7 +44,7 @@ class ChubbyIMEService : InputMethodService(), LifecycleOwner, ViewModelStoreOwn
     private val dispatcher = ServiceLifecycleDispatcher(this)
 
     override fun onCreateInputView(): View {
-        val view = ChubbyKeyboardView(this)
+        val view = ChubbyKeyboardView(this, viewModel)
 
         window?.window?.decorView?.let { decorView ->
             decorView.setViewTreeLifecycleOwner(this)

@@ -1,13 +1,16 @@
 package com.chubbykeyboard.view.keyboard
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.AbstractComposeView
 
-class ChubbyKeyboardView(context: Context) : AbstractComposeView(context) {
+@SuppressLint("ViewConstructor")
+class ChubbyKeyboardView(context: Context, private val viewModel: ChubbyKeyboardViewModel) :
+    AbstractComposeView(context) {
 
     @Composable
     override fun Content() {
-        ChubbyKeyboard()
+        ChubbyKeyboard(viewModel)
     }
 }
