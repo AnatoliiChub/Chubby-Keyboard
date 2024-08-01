@@ -1,21 +1,24 @@
 package com.chubbykeyboard.view.keyboard
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.chubbykeyboard.view.key.FunctionalKey
 import com.chubbykeyboard.view.key.Key
 import com.chubbykeyboard.view.key.PrintedKey
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class ChubbyKeyboardViewModel @Inject constructor() : ViewModel() {
 
-    private val isShifted: MutableStateFlow<Boolean> = MutableStateFlow(false)
-
-    val currentKeyGrid: StateFlow<Array<Array<Key>>> = MutableStateFlow(
-        arrayOf(
+    companion object {
+        private val DEFAULT_ALPHABET_KEY_MATRIX: Array<Array<Key>> = arrayOf(
             arrayOf("q", "w", "e", "r", "t", "y", "u", "i", "o", "p").map { PrintedKey.Letter(it) }.toTypedArray(),
             arrayOf("a", "s", "d", "f", "g", "h", "j", "k", "l").map { PrintedKey.Letter(it) }.toTypedArray(),
             arrayOf(
@@ -38,10 +41,31 @@ class ChubbyKeyboardViewModel @Inject constructor() : ViewModel() {
                 FunctionalKey.Enter
             )
         )
+
+        private val DEFAULT_STATE = KeyBoardState(false, DEFAULT_ALPHABET_KEY_MATRIX)
+    }
+
+    private val _uiState = MutableStateFlow(
+        KeyBoardParameters(false, Locale.getDefault(), KeyboardType.ALPHABET)
     )
 
-    fun onShiftPressed() : Boolean  {
-        isShifted.value = !isShifted.value
-        return isShifted.value
+    val uiState: StateFlow<KeyBoardState> = _uiState
+        .map {
+            val keyMatrix = when (it.keyboardType) {
+                KeyboardType.ALPHABET -> {
+                    DEFAULT_ALPHABET_KEY_MATRIX
+                }
+                KeyboardType.SYMBOL -> TODO()
+                KeyboardType.NUMBER -> TODO()
+            }
+            KeyBoardState(it.isCapsLockActive, keyMatrix)
+        }.stateIn(
+            viewModelScope,
+            started = SharingStarted.WhileSubscribed(500),
+            initialValue = DEFAULT_STATE
+        )
+
+    fun onCapsLockPressed() {
+        _uiState.value = _uiState.value.copy(isCapsLockActive = !_uiState.value.isCapsLockActive)
     }
 }

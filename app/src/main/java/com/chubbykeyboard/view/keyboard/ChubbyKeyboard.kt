@@ -8,14 +8,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.view.key.FunctionalKey
 import com.chubbykeyboard.view.key.PrintedKey
@@ -31,9 +29,8 @@ import com.chubbykeyboard.view.key.functional.ToSymbolsButton
 fun ChubbyKeyboard(
     viewModel: ChubbyKeyboardViewModel = hiltViewModel()
 ) {
-    val isShifted = rememberSaveable { mutableStateOf(false) }
-
-    val keyGrid = viewModel.currentKeyGrid.collectAsState()
+    val state = viewModel.uiState.collectAsStateWithLifecycle()
+    val isCapsLock = state.value.isCapsLockActive
     val service = (LocalContext.current as ChubbyIMEService)
 
     Box(
@@ -46,7 +43,7 @@ fun ChubbyKeyboard(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            keyGrid.value.forEach { row ->
+            state.value.keyMatrix.forEach { row ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -54,9 +51,9 @@ fun ChubbyKeyboard(
                 ) {
                     row.forEach { key ->
                         when (key) {
-                            is PrintedKey -> PrintedKeyButton(key, isShifted.value)
-                            is FunctionalKey.CapsLock -> CapsLockButton(key, isShifted.value) {
-                                isShifted.value = !isShifted.value
+                            is PrintedKey -> PrintedKeyButton(key, isCapsLock)
+                            is FunctionalKey.CapsLock -> CapsLockButton(key, isCapsLock) {
+                                viewModel.onCapsLockPressed()
                             }
 
                             is FunctionalKey.Backspace -> BackSpaceButton(key) {

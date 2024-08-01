@@ -67,6 +67,8 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.navigation.compose )
+    //lifecycle runtime compose
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
