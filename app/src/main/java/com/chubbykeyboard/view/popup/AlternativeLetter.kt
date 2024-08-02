@@ -41,22 +41,27 @@ fun AlternativeLetter(
             )
             .onGloballyPositioned {
                 val offset = it.localToWindow(Zero)
+                val height = it.size.height
+                val width = it.size.width
+                // For user convenience, we move selection bounds a bit down.
+                val additionalVertOffset = (height * 0.4).toInt()
+
                 bounds.value = Rect(
                     offset.x - popupOffset.x,
-                    offset.y - popupOffset.y,
-                    offset.x + it.size.width - popupOffset.x,
-                    offset.y + it.size.height - popupOffset.y
+                    offset.y - popupOffset.y + additionalVertOffset,
+                    offset.x + width - popupOffset.x,
+                    offset.y + height - popupOffset.y + additionalVertOffset
                 )
             },
     ) {
         Text(
             maxLines = 1,
             modifier = Modifier
-                .padding(6.dp)
-                .size(40.dp),
+                .padding(4.dp)
+                .size(32.dp),
             textAlign = TextAlign.Center,
             text = letter,
-            fontSize = 24.sp
+            fontSize = 22.sp
         )
     }
 }

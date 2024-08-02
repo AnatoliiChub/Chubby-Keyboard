@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.ui.theme.BackgroundColor
+import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
 import com.chubbykeyboard.view.key.FunctionalKey.Backspace
 import com.chubbykeyboard.view.key.FunctionalKey.CapsLock
 import com.chubbykeyboard.view.key.FunctionalKey.Enter
@@ -38,24 +39,29 @@ fun ChubbyKeyboard(
     viewModel: ChubbyKeyboardViewModel
 ) {
     val state = viewModel.uiState.collectAsStateWithLifecycle()
-    when (state.value) {
+    ChubbyKeyboardTheme {
+        when (state.value) {
+            KeyBoardState.Loading -> LoadingBox()
+            is KeyBoardState.Content -> Keyboard(
+                state.value as KeyBoardState.Content,
+                onCapsLockPressed = viewModel::onCapsLockPressed,
+                onSwitchLangPressed = viewModel::switchLanguage
+            )
 
-        KeyBoardState.Loading -> Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(288.dp)
-                .padding(32.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            CircularProgressIndicator(modifier = Modifier.size(96.dp))
         }
+    }
+}
 
-        is KeyBoardState.Content -> Keyboard(
-            state.value as KeyBoardState.Content,
-            onCapsLockPressed = viewModel::onCapsLockPressed,
-            onSwitchLangPressed = viewModel::switchLanguage
-        )
-
+@Composable
+private fun LoadingBox() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(288.dp)
+            .padding(32.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        CircularProgressIndicator(modifier = Modifier.size(96.dp))
     }
 }
 
@@ -66,7 +72,7 @@ private fun Keyboard(state: KeyBoardState.Content, onCapsLockPressed: () -> Unit
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 48.dp)
+            .padding(top = 72.dp)
             .background(BackgroundColor)
     ) {
         Column(

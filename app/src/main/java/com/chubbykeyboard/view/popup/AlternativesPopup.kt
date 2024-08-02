@@ -2,6 +2,7 @@ package com.chubbykeyboard.view.popup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -13,35 +14,33 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
-import com.chubbykeyboard.screenSize
+import com.chubbykeyboard.ceilDiv
 import com.chubbykeyboard.ui.theme.AlternativeBackground
 import com.chubbykeyboard.view.key.PrintedKey
 import com.chubbykeyboard.view.popup.positioinprovider.TrackablePositionProvider
 
+private const val POPUP_VERTICAL_OFFSET = -128
+
 @Composable
-fun AlternativeLetterPopup(
+fun AlternativesPopup(
     keys: List<PrintedKey.Letter>,
     dragGesturePosition: MutableState<Offset>,
     buttonOffset: MutableState<Offset>,
     onSelected: (String) -> Unit
 ) {
-
     val popupOffset = remember {
         mutableStateOf(Offset.Zero)
     }
-
-    val verticalOffset = -188
+    val rowNumber = calculateRowNumbers(keys.size)
 
     Popup(
         popupPositionProvider = TrackablePositionProvider(
             alignment = Alignment.TopCenter,
-            offset = IntOffset(0, verticalOffset),
-            screenSize = LocalConfiguration.current.screenSize(),
+            offset = IntOffset(0, POPUP_VERTICAL_OFFSET * rowNumber),
             onPopupPositionChanged = {
                 popupOffset.value = it
             },
@@ -52,29 +51,40 @@ fun AlternativeLetterPopup(
             buttonOffset.value.x - popupOffset.value.x,
             buttonOffset.value.y - popupOffset.value.y
         )
-        //todo make 2 rows in case if there are more than 3 keys
         Box {
-            Row(
+            Column(
                 modifier = Modifier
                     .wrapContentSize()
-                    .padding(8.dp)
                     .background(
                         color = AlternativeBackground,
                         shape = RoundedCornerShape(12.dp)
-                    )
+                    ),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                keys.map { it.displayedSymbol }.forEach { letter ->
-                    Box(modifier = Modifier.padding(4.dp)) {
-                        AlternativeLetter(
-                            letter,
-                            dragGesturePosition.value,
-                            popupRelativeOffset
-                        ) {
-                            onSelected.invoke(letter)
+                keys.chunked((keys.size.ceilDiv(rowNumber))).forEach { row ->
+                    Row {
+                        row.map { it.displayedSymbol }.forEach { letter ->
+                            Box(modifier = Modifier.padding(4.dp)) {
+                                AlternativeLetter(
+                                    letter,
+                                    dragGesturePosition.value,
+                                    popupRelativeOffset
+                                ) {
+                                    onSelected.invoke(letter)
+                                }
+                            }
                         }
                     }
                 }
             }
+
         }
     }
+}
+
+
+private fun calculateRowNumbers(size: Int) = when (size) {
+    in 1..3 -> 1
+    in 4..8 -> 2
+    else -> 3
 }

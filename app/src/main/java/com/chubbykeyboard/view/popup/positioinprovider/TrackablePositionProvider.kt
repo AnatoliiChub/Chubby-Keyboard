@@ -8,14 +8,12 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.toOffset
 import androidx.compose.ui.window.PopupPositionProvider
-import com.chubbykeyboard.view.model.ScreenSize
 
 class TrackablePositionProvider(
     val alignment: Alignment,
     val offset: IntOffset,
     val onPopupPositionChanged: (Offset) -> Unit,
-    val screenSize: ScreenSize,
-    private val positionProvider: PopupPositionProvider = BorderHandledPositionProvider(alignment, offset, screenSize)
+    private val positionProvider: PopupPositionProvider = BorderHandledPositionProvider(alignment, offset)
 ) : PopupPositionProvider {
 
     override fun calculatePosition(

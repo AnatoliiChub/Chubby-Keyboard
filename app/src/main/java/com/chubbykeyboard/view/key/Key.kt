@@ -43,16 +43,17 @@ sealed class FunctionalKey : Key() {
     }
 }
 
-sealed class PrintedKey : Key() {
+sealed class PrintedKey(val alternatives: List<String>) : Key() {
     open val printedSymbol: String
         get() = displayedSymbol
 
-    data class Symbol(val symbol: String) : PrintedKey() {
+
+    class Symbol(private val symbol: String, alternatives: List<String> = emptyList()) : PrintedKey(alternatives) {
         override val displayedSymbol: String
             get() = symbol
     }
 
-    data class Letter(val letter: String) : PrintedKey() {
+    class Letter(private val letter: String, alternatives: List<String> = emptyList()) : PrintedKey(alternatives) {
 
         private var isCapital: Boolean = false
 

@@ -28,7 +28,7 @@ import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
 import com.chubbykeyboard.debounceCombinedClickable
 import com.chubbykeyboard.ui.theme.PrintedKeyBrush
-import com.chubbykeyboard.view.popup.AlternativeLetterPopup
+import com.chubbykeyboard.view.popup.AlternativesPopup
 import java.util.Locale
 
 @Composable
@@ -75,15 +75,11 @@ fun RowScope.PrintedKeyButton(
             text = key.displayedSymbol,
             fontSize = 24.sp
         )
-        if (pressed.value && longPressed.value) {
-            //todo: fix hardcoded values
-            val hardCodedLetters =
-                listOf("q", "w", "e").map { PrintedKey.Letter(it) }.onEach { it.setCapital(isShiftedParam) }
-
-            AlternativeLetterPopup(hardCodedLetters, dragGesturePosition, rootPosition, onSelected = {
+        if (pressed.value && longPressed.value && key.alternatives.isNotEmpty()) {
+            val alternatives = key.alternatives.map { PrintedKey.Letter(it) }.onEach { it.setCapital(isShiftedParam) }
+            AlternativesPopup(alternatives, dragGesturePosition, rootPosition) {
                 selectedPromptLetter.value = it
-            })
-
+            }
         } else {
             if (longPressed.value && selectedPromptLetter.value != NO_INPUT) {
                 onPrintedKeyPressed(ctx, selectedPromptLetter.value, isShiftedParam)

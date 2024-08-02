@@ -2,7 +2,7 @@ package com.chubbykeyboard.data
 
 import androidx.collection.LruCache
 import com.chubbykeyboard.data.provider.EnglishLetterMatrixProvider
-import com.chubbykeyboard.data.provider.LetterKeyMatrix
+import com.chubbykeyboard.data.provider.PrintedKeyMatrix
 import com.chubbykeyboard.data.provider.UkrainianLetterMatrixProvider
 import com.chubbykeyboard.view.key.FunctionalKey
 import com.chubbykeyboard.view.key.Key
@@ -31,6 +31,7 @@ class CachedAlphabetKeyMatrixRepository @Inject constructor() : AlphabetKeyMatri
             return it
         }
         val language = SupportedLanguages.fromCode(locale.language)
+        //todo MOVE IT TO Json file or each language
         val letterKeyMatrix = LETTER_PROVIDERS[language]?.provide() ?: DEFAULT_PROVIDER.provide()
         val keyMatrix = createTemplatedKeyMatrix(letterKeyMatrix)
         cachedKeyMatrix.put(locale, keyMatrix)
@@ -38,14 +39,14 @@ class CachedAlphabetKeyMatrixRepository @Inject constructor() : AlphabetKeyMatri
     }
 
     private fun createTemplatedKeyMatrix(
-        letterKeyMatrix: LetterKeyMatrix
+        letterKeyMatrix: PrintedKeyMatrix
     ) = with(letterKeyMatrix) {
         listOf(
-            firstLine.map { PrintedKey.Letter(it) },
-            secondLine.map { PrintedKey.Letter(it) },
+            firstLine as List<Key>,
+            secondLine as List<Key>,
             listOf(
                 FunctionalKey.CapsLock,
-                *thirdLine.map { PrintedKey.Letter(it) }.toTypedArray(),
+                *thirdLine.toTypedArray(),
                 FunctionalKey.Backspace
             ),
             listOf(
@@ -53,7 +54,7 @@ class CachedAlphabetKeyMatrixRepository @Inject constructor() : AlphabetKeyMatri
                 PrintedKey.Symbol(","),
                 FunctionalKey.SwitchLanguage,
                 FunctionalKey.Space,
-                PrintedKey.Symbol("."),
+                PrintedKey.Symbol(".", "&%+\"-:'@;/()#!,?".map { it.toString() }),
                 FunctionalKey.Enter
             )
         )
