@@ -1,6 +1,5 @@
 package com.chubbykeyboard.view.keyboard
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
