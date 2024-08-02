@@ -31,6 +31,7 @@ fun RowScope.BaseFunctionalButton(
     key: FunctionalKey,
     weight: Float = 1.5f,
     fontSize: TextUnit = 20.sp,
+    maxLines : Int = 1,
     fontWeight: FontWeight = Normal,
     onClick: () -> Unit,
     backgroundBrushProvider: (Boolean) -> Brush = FunctionalKeyBrush
@@ -55,11 +56,12 @@ fun RowScope.BaseFunctionalButton(
         contentAlignment = Alignment.Center
     ) {
         Text(
-            maxLines = 1,
+            maxLines = maxLines,
             textAlign = TextAlign.Center,
             text = key.label,
             fontSize = fontSize,
-            fontWeight = fontWeight
+            fontWeight = fontWeight,
+            lineHeight = fontSize
         )
     }
 }

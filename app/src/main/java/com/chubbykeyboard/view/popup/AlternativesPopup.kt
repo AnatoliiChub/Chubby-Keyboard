@@ -23,7 +23,7 @@ import com.chubbykeyboard.ui.theme.AlternativeBackground
 import com.chubbykeyboard.view.key.PrintedKey
 import com.chubbykeyboard.view.popup.positioinprovider.TrackablePositionProvider
 
-private const val POPUP_VERTICAL_OFFSET = -128
+private const val POPUP_VERTICAL_OFFSET = -64
 
 @Composable
 fun AlternativesPopup(

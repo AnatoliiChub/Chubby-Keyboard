@@ -4,8 +4,9 @@ import com.chubbykeyboard.view.key.Key
 import java.util.Locale
 
 enum class KeyboardType {
-    ALPHABET,
-    SYMBOL,
+    LETTERS,
+    SYMBOLS,
+    ADDITIONAL_SYMBOLS,
     NUMBER
 }
 

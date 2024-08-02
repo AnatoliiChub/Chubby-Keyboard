@@ -2,29 +2,31 @@ package com.chubbykeyboard.view.key
 
 sealed class Key
 
-enum class Functional(val labels: List<String>) {
+enum class Functional {
 
-    CapsLock(listOf("\u21E7", "\u21EA")),
-    ToSymbols(listOf("?123")),
-    Backspace(listOf("⌫")),
-    Enter(listOf("\u23CE")),
-    SwitchLanguage(listOf("\uD83C\uDF10\uFE0E")),
-    Space(listOf("\u2423"));
+    CapsLock,
+    ToSymbols,
+    ToAdditionalSymbols,
+    ToLetters,
+    ToNumPad,
+    Backspace,
+    Enter,
+    SwitchLanguage,
+    Space;
 }
 
-open class FunctionalKey(val function: Functional) : Key() {
-
-    open val label: String = function.labels.first()
+open class FunctionalKey(val function: Functional, open val label: String) : Key() {
 
     class CapsLock(
         private var isCapsLock: Boolean = false,
-    ) : FunctionalKey(Functional.CapsLock) {
+        private var labels: Pair<String, String> = Pair("\u21EA", "\u21E7")
+    ) : FunctionalKey(Functional.CapsLock, labels.second) {
         fun updateShift(isCapsLock: Boolean) {
             this.isCapsLock = isCapsLock
         }
 
         override val label: String
-            get() = with(function.labels) { if (isCapsLock) first() else last() }
+            get() = with(labels) { if (isCapsLock) first else second }
     }
 }
 

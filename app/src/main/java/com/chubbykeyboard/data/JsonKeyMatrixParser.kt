@@ -45,13 +45,17 @@ class JsonKeyMatrixParser @Inject constructor(
             }
 
             jsonObject.has("function") -> {
+                val label = jsonObject.get("label").asString
                 when (val function = jsonObject.get("function").asString) {
                     "CapsLock" -> FunctionalKey.CapsLock(jsonObject.get("isCapsLock")?.asBoolean ?: false)
-                    "ToSymbols" -> FunctionalKey(Functional.ToSymbols)
-                    "Backspace" -> FunctionalKey(Functional.Backspace)
-                    "Enter" -> FunctionalKey(Functional.Enter)
-                    "SwitchLanguage" -> FunctionalKey(Functional.SwitchLanguage)
-                    "Space" -> FunctionalKey(Functional.Space)
+                    "ToSymbols" -> FunctionalKey(Functional.ToSymbols, label)
+                    "Backspace" -> FunctionalKey(Functional.Backspace, label)
+                    "Enter" -> FunctionalKey(Functional.Enter, label)
+                    "SwitchLanguage" -> FunctionalKey(Functional.SwitchLanguage, label)
+                    "Space" -> FunctionalKey(Functional.Space, label)
+                    "ToLetters" -> FunctionalKey(Functional.ToLetters, label)
+                    "ToNumPad" -> FunctionalKey(Functional.ToNumPad, label)
+                    "ToAdditionalSymbols" -> FunctionalKey(Functional.ToAdditionalSymbols, label)
                     else -> throw IllegalArgumentException("Unknown function: $function")
                 }
             }

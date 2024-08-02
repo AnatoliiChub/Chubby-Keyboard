@@ -18,10 +18,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.ui.theme.BackgroundColor
 import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
+import com.chubbykeyboard.view.key.Functional
 import com.chubbykeyboard.view.key.Functional.Backspace
 import com.chubbykeyboard.view.key.Functional.Enter
 import com.chubbykeyboard.view.key.Functional.Space
 import com.chubbykeyboard.view.key.Functional.SwitchLanguage
+import com.chubbykeyboard.view.key.Functional.ToAdditionalSymbols
+import com.chubbykeyboard.view.key.Functional.ToLetters
+import com.chubbykeyboard.view.key.Functional.ToNumPad
 import com.chubbykeyboard.view.key.Functional.ToSymbols
 import com.chubbykeyboard.view.key.FunctionalKey
 import com.chubbykeyboard.view.key.FunctionalKey.CapsLock
@@ -32,6 +36,9 @@ import com.chubbykeyboard.view.key.functional.CapsLockButton
 import com.chubbykeyboard.view.key.functional.EnterButton
 import com.chubbykeyboard.view.key.functional.SpaceButton
 import com.chubbykeyboard.view.key.functional.SwitchLanguageButton
+import com.chubbykeyboard.view.key.functional.ToAdditionalSymbolsButton
+import com.chubbykeyboard.view.key.functional.ToNumPadButton
+import com.chubbykeyboard.view.key.functional.ToSLettersButton
 import com.chubbykeyboard.view.key.functional.ToSymbolsButton
 
 @Composable
@@ -45,9 +52,10 @@ fun ChubbyKeyboard(
             is KeyBoardState.Content -> Keyboard(
                 state.value as KeyBoardState.Content,
                 onCapsLockPressed = viewModel::onCapsLockPressed,
-                onSwitchLangPressed = viewModel::switchLanguage
+                onSwitchLangPressed = viewModel::switchLanguage,
+                onToSymbolsPressed = viewModel::onToSymbolsPressed,
+                onToLettersPressed = viewModel::onToLettersPressed
             )
-
         }
     }
 }
@@ -66,13 +74,18 @@ private fun LoadingBox() {
 }
 
 @Composable
-private fun Keyboard(state: KeyBoardState.Content, onCapsLockPressed: () -> Unit, onSwitchLangPressed: () -> Unit) {
+private fun Keyboard(
+    state: KeyBoardState.Content,
+    onCapsLockPressed: () -> Unit,
+    onSwitchLangPressed: () -> Unit,
+    onToSymbolsPressed: () -> Unit,
+    onToLettersPressed: () -> Unit
+) {
     val isCapsLock = state.isCapsLockActive
     val service = (LocalContext.current as ChubbyIMEService)
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 72.dp)
             .background(BackgroundColor)
     ) {
         Column(
@@ -95,13 +108,21 @@ private fun Keyboard(state: KeyBoardState.Content, onCapsLockPressed: () -> Unit
                                     Backspace -> BackSpaceButton(key) {
                                         service.currentInputConnection.deleteSurroundingText(1, 0)
                                     }
+
                                     Enter -> EnterButton(key) { service.sendKeyChar('\n') }
-                                    ToSymbols -> ToSymbolsButton(key) {
-                                        // TODO: Switch to symbols keyboard
-                                    }
                                     SwitchLanguage -> SwitchLanguageButton(key) { onSwitchLangPressed() }
                                     Space -> SpaceButton(key) { service.sendKeyChar(' ') }
-                                    else -> Unit
+                                    ToSymbols -> ToSymbolsButton(key) { onToSymbolsPressed() }
+                                    ToLetters -> ToSLettersButton(key) { onToLettersPressed() }
+                                    ToAdditionalSymbols -> ToAdditionalSymbolsButton(key) {
+                                        // TODO: Implement listener
+                                    }
+                                    ToNumPad -> ToNumPadButton(key) {
+                                        // TODO: Implement listener
+                                    }
+
+                                    //Already handled
+                                    Functional.CapsLock -> Unit
                                 }
                             }
                         }

@@ -23,26 +23,20 @@ class ChubbyKeyboardViewModel(
 ) : ViewModel() {
     private val workDispatcher = Dispatchers.Default
     private val isCapsLockActive = MutableStateFlow(false)
+
     // TODO: invoke on worker thread
     private val currentLocale = MutableStateFlow(getCurrentSupportedLocaleUseCase.invoke())
-    private val keyboardType = MutableStateFlow(KeyboardType.ALPHABET)
+    private val keyboardType = MutableStateFlow(KeyboardType.LETTERS)
 
     private val _uiState =
         combine(isCapsLockActive, currentLocale, keyboardType) { capsLock, locale, keyboardType ->
-            Log.d("rep1", "new state: capsLock=$capsLock, locale=$locale, keyboardType=$keyboardType")
             KeyBoardParameters(capsLock, locale, keyboardType)
         }
 
 
     val uiState: StateFlow<KeyBoardState> = _uiState
         .map {
-            val keyMatrix = when (it.keyboardType) {
-                KeyboardType.ALPHABET -> {
-                    provideKeyMatrixUseCase.provide(it.currentLocale)
-                }
-                KeyboardType.SYMBOL -> TODO()
-                KeyboardType.NUMBER -> TODO()
-            }
+            val keyMatrix = provideKeyMatrixUseCase.provide(it.currentLocale, it.keyboardType)
             KeyBoardState.Content(it.isCapsLockActive, keyMatrix)
         }.flowOn(workDispatcher)
         .stateIn(
@@ -50,6 +44,14 @@ class ChubbyKeyboardViewModel(
             started = SharingStarted.WhileSubscribed(500),
             initialValue = KeyBoardState.Loading
         )
+
+    fun onToSymbolsPressed() {
+        keyboardType.value = KeyboardType.SYMBOLS
+    }
+
+    fun onToLettersPressed() {
+        keyboardType.value = KeyboardType.LETTERS
+    }
 
     fun onCapsLockPressed() {
         isCapsLockActive.value = !isCapsLockActive.value

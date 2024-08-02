@@ -1,8 +1,8 @@
 package com.chubbykeyboard.di
 
-import com.chubbykeyboard.data.AlphabetKeyMatrixRepository
+import com.chubbykeyboard.data.KeyMatrixRepository
 import com.chubbykeyboard.data.AvailableLocalesRepository
-import com.chubbykeyboard.data.CachedAlphabetKeyMatrixRepository
+import com.chubbykeyboard.data.CachedKeyMatrixRepository
 import com.chubbykeyboard.data.LocalesRepository
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ import dagger.hilt.android.components.ViewModelComponent
 class DataModule {
 
     @Provides
-    fun provideAlphabetKeyMatrixRepository(repo: CachedAlphabetKeyMatrixRepository): AlphabetKeyMatrixRepository {
+    fun provideAlphabetKeyMatrixRepository(repo: CachedKeyMatrixRepository): KeyMatrixRepository {
         return repo
     }
 
