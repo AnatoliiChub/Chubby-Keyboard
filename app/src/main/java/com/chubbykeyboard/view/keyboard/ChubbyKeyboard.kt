@@ -1,6 +1,5 @@
 package com.chubbykeyboard.view.keyboard
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -77,6 +76,7 @@ private fun Keyboard(state: KeyBoardState.Content, onCapsLockPressed: () -> Unit
     ) {
         Column(
             modifier = Modifier
+                .padding(top = 4.dp)
                 .fillMaxWidth()
         ) {
             state.keyMatrix.forEach { row ->

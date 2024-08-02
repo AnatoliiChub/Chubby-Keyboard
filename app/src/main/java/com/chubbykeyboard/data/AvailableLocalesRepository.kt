@@ -5,7 +5,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Locale
 import javax.inject.Inject
 
-
 class AvailableLocalesRepository @Inject constructor(@ApplicationContext private val context: Context) :
     LocalesRepository {
 
