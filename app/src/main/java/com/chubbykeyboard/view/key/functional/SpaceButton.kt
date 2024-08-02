@@ -8,7 +8,7 @@ import com.chubbykeyboard.view.key.FunctionalKey
 
 @Composable
 fun RowScope.SpaceButton(
-    key: FunctionalKey.Space,
+    key: FunctionalKey,
     onPress: () -> Unit,
 ) {
     BaseFunctionalButton(

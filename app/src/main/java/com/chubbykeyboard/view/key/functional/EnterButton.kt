@@ -9,7 +9,7 @@ import com.chubbykeyboard.view.key.FunctionalKey
 
 @Composable
 fun RowScope.EnterButton(
-    key: FunctionalKey.Enter,
+    key: FunctionalKey,
     onPress: () -> Unit,
 ) {
     BaseFunctionalButton(

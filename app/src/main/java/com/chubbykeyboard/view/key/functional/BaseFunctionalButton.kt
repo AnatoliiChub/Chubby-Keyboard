@@ -57,7 +57,7 @@ fun RowScope.BaseFunctionalButton(
         Text(
             maxLines = 1,
             textAlign = TextAlign.Center,
-            text = key.displayedSymbol,
+            text = key.label,
             fontSize = fontSize,
             fontWeight = fontWeight
         )

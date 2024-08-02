@@ -56,7 +56,7 @@ fun RowScope.PrintedKeyButton(
                 interactionSource = interactionSource,
                 indication = rememberRipple(true),
                 onLongClick = { longPressed.value = true },
-                onClick = { onPrintedKeyPressed(ctx, key.printedSymbol, isShiftedParam) })
+                onClick = { onPrintedKeyPressed(ctx, key.symbol, isShiftedParam) })
             .pointerInput(Unit) {
                 detectDragGesturesAfterLongPress { change, _ ->
                     dragGesturePosition.value = change.position
@@ -72,7 +72,7 @@ fun RowScope.PrintedKeyButton(
         Text(
             maxLines = 1,
             textAlign = TextAlign.Center,
-            text = key.displayedSymbol,
+            text = key.symbol,
             fontSize = 24.sp
         )
         if (pressed.value && longPressed.value && key.alternatives.isNotEmpty()) {

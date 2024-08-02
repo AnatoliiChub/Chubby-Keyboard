@@ -13,8 +13,10 @@ composeBom = "2024.06.00"
 lifecycleService = "2.8.4"
 navigation = "1.2.0"
 lifecycle-runtime-compose = "2.8.4"
+gson = "2.11.0"
 
 [libraries]
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "daggerHilt" }
 dagger-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt" }

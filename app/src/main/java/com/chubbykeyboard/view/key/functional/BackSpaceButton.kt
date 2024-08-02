@@ -8,7 +8,7 @@ import com.chubbykeyboard.view.key.FunctionalKey
 
 @Composable
 fun RowScope.BackSpaceButton(
-    key: FunctionalKey.Backspace,
+    key: FunctionalKey,
     onPress: () -> Unit,
 ) {
     BaseFunctionalButton(

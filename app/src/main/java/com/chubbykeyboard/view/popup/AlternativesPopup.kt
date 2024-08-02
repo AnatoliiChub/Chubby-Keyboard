@@ -63,7 +63,7 @@ fun AlternativesPopup(
             ) {
                 keys.chunked((keys.size.ceilDiv(rowNumber))).forEach { row ->
                     Row {
-                        row.map { it.displayedSymbol }.forEach { letter ->
+                        row.map { it.symbol }.forEach { letter ->
                             Box(modifier = Modifier.padding(4.dp)) {
                                 AlternativeLetter(
                                     letter,

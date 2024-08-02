@@ -1,0 +1,301 @@
+[
+  [
+    {
+      "isCapital":false,
+      "letter":"й",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"ц",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"у",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"к",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"е",
+      "alternatives":[
+        "ё"
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"н",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"г",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"ш",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"щ",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"з",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"х",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"ї",
+      "alternatives":[
+
+      ]
+    }
+  ],
+  [
+    {
+      "isCapital":false,
+      "letter":"ф",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"і",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"в",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"а",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"п",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"р",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"о",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"л",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"д",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"ж",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"є",
+      "alternatives":[
+        "э"
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"\u0027",
+      "alternatives":[
+        "ʼ"
+      ]
+    }
+  ],
+  [
+    {
+      "isCapsLock":false,
+      "function":"CapsLock",
+      "label":"⇧"
+    },
+    {
+      "isCapital":false,
+      "letter":"я",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"ч",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"с",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"м",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"и",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"т",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"ь",
+      "alternatives":[
+        "ъ",
+        "ы"
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"б",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"ю",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "isCapital":false,
+      "letter":"ґ",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "function":"Backspace",
+      "label":"⌫"
+    }
+  ],
+  [
+    {
+      "function":"ToSymbols",
+      "label":"?123"
+    },
+    {
+      "symbol":",",
+      "alternatives":[
+
+      ]
+    },
+    {
+      "function":"SwitchLanguage",
+      "label":"🌐︎"
+    },
+    {
+      "function":"Space",
+      "label":"␣"
+    },
+    {
+      "symbol":".",
+      "alternatives":[
+        "\u0026",
+        "%",
+        "+",
+        "\"",
+        "-",
+        ":",
+        "\u0027",
+        "@",
+        ";",
+        "/",
+        "(",
+        ")",
+        "#",
+        "!",
+        ",",
+        "?"
+      ]
+    },
+    {
+      "function":"Enter",
+      "label":"⏎"
+    }
+  ]
+]

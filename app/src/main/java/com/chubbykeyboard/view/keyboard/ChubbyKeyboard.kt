@@ -18,12 +18,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.ui.theme.BackgroundColor
 import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
-import com.chubbykeyboard.view.key.FunctionalKey.Backspace
+import com.chubbykeyboard.view.key.Functional.Backspace
+import com.chubbykeyboard.view.key.Functional.Enter
+import com.chubbykeyboard.view.key.Functional.Space
+import com.chubbykeyboard.view.key.Functional.SwitchLanguage
+import com.chubbykeyboard.view.key.Functional.ToSymbols
+import com.chubbykeyboard.view.key.FunctionalKey
 import com.chubbykeyboard.view.key.FunctionalKey.CapsLock
-import com.chubbykeyboard.view.key.FunctionalKey.Enter
-import com.chubbykeyboard.view.key.FunctionalKey.Space
-import com.chubbykeyboard.view.key.FunctionalKey.SwitchLanguage
-import com.chubbykeyboard.view.key.FunctionalKey.ToSymbols
 import com.chubbykeyboard.view.key.PrintedKey
 import com.chubbykeyboard.view.key.PrintedKeyButton
 import com.chubbykeyboard.view.key.functional.BackSpaceButton
@@ -89,20 +90,20 @@ private fun Keyboard(state: KeyBoardState.Content, onCapsLockPressed: () -> Unit
                         when (key) {
                             is PrintedKey -> PrintedKeyButton(key, isCapsLock)
                             is CapsLock -> CapsLockButton(key, isCapsLock) { onCapsLockPressed() }
-
-                            is Backspace -> BackSpaceButton(key) {
-                                service.currentInputConnection.deleteSurroundingText(1, 0)
+                            is FunctionalKey -> {
+                                when (key.function) {
+                                    Backspace -> BackSpaceButton(key) {
+                                        service.currentInputConnection.deleteSurroundingText(1, 0)
+                                    }
+                                    Enter -> EnterButton(key) { service.sendKeyChar('\n') }
+                                    ToSymbols -> ToSymbolsButton(key) {
+                                        // TODO: Switch to symbols keyboard
+                                    }
+                                    SwitchLanguage -> SwitchLanguageButton(key) { onSwitchLangPressed() }
+                                    Space -> SpaceButton(key) { service.sendKeyChar(' ') }
+                                    else -> Unit
+                                }
                             }
-
-                            is Enter -> EnterButton(key) { service.sendKeyChar('\n') }
-
-                            is ToSymbols -> ToSymbolsButton(key) {
-                                // TODO: Switch to symbols keyboard
-                            }
-
-                            is SwitchLanguage -> SwitchLanguageButton(key) { onSwitchLangPressed() }
-
-                            is Space -> SpaceButton(key) { service.sendKeyChar(' ') }
                         }
                     }
                 }

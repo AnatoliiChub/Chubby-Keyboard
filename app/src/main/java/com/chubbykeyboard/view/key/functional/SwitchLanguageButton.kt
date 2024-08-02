@@ -6,7 +6,7 @@ import com.chubbykeyboard.view.key.FunctionalKey
 
 @Composable
 fun RowScope.SwitchLanguageButton(
-    key: FunctionalKey.SwitchLanguage,
+    key: FunctionalKey,
     onPress: () -> Unit,
 ) {
     BaseFunctionalButton(

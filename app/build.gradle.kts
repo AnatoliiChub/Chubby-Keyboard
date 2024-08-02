@@ -69,6 +69,8 @@ dependencies {
     implementation(libs.dagger.hilt.navigation.compose )
     //lifecycle runtime compose
     implementation(libs.androidx.lifecycle.runtime.compose)
+    //gson
+    implementation(libs.gson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

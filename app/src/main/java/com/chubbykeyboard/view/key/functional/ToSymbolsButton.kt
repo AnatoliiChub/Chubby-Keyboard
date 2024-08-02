@@ -6,7 +6,7 @@ import com.chubbykeyboard.view.key.FunctionalKey
 
 @Composable
 fun RowScope.ToSymbolsButton(
-    key: FunctionalKey.ToSymbols,
+    key: FunctionalKey,
     onPress: () -> Unit,
 ) {
     BaseFunctionalButton(
