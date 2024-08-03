@@ -1,4 +1,4 @@
-package com.chubbykeyboard.ui.state
+package com.chubbykeyboard.keyboard
 
 import java.util.Locale
 

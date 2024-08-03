@@ -16,21 +16,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.ChubbyIMEService
-import com.chubbykeyboard.Functional
+import com.chubbykeyboard.keyboard.keys.Functional.*
 import com.chubbykeyboard.ui.theme.BackgroundColor
 import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
-import com.chubbykeyboard.Functional.Backspace
-import com.chubbykeyboard.Functional.Enter
-import com.chubbykeyboard.Functional.Space
-import com.chubbykeyboard.Functional.SwitchLanguage
-import com.chubbykeyboard.Functional.ToAdditionalSymbols
-import com.chubbykeyboard.Functional.ToLetters
-import com.chubbykeyboard.Functional.ToNumPad
-import com.chubbykeyboard.Functional.ToSymbols
-import com.chubbykeyboard.FunctionalKey
-import com.chubbykeyboard.FunctionalKey.CapsLock
-import com.chubbykeyboard.ui.state.KeyBoardState
-import com.chubbykeyboard.PrintedKey
+
+import com.chubbykeyboard.keyboard.keys.FunctionalKey
+import com.chubbykeyboard.keyboard.keys.FunctionalKey.CapsLock
+import com.chubbykeyboard.keyboard.KeyBoardState
+import com.chubbykeyboard.keyboard.keys.PrintedKey
 import com.chubbykeyboard.ui.view.key.PrintedKeyButton
 import com.chubbykeyboard.ui.view.key.functional.*
 
@@ -117,7 +110,7 @@ private fun Keyboard(
                                     }
 
                                     //Already handled
-                                    Functional.CapsLock -> Unit
+                                    CapsLock -> Unit
                                 }
                             }
                         }

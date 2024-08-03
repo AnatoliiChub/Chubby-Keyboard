@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.sp
-import com.chubbykeyboard.FunctionalKey
+import com.chubbykeyboard.keyboard.keys.FunctionalKey
 
 @Composable
 fun RowScope.BackSpaceButton(

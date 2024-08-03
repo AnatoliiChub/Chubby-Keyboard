@@ -2,7 +2,6 @@ package com.chubbykeyboard.data.parser
 
 import com.chubbykeyboard.keyboard.keys.Key
 
-interface KeyMatrixParser {
-
-    fun parse(fileName : String) : List<List<Key>>
-}
+data class KeyMatrix(
+    val matrix: List<List<Key>>
+)

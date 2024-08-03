@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
 import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
 import com.chubbykeyboard.domain.SwitchLanguageUseCase
-import com.chubbykeyboard.ui.state.KeyBoardParameters
-import com.chubbykeyboard.ui.state.KeyBoardState
-import com.chubbykeyboard.ui.state.KeyboardType
+import com.chubbykeyboard.keyboard.KeyBoardParameters
+import com.chubbykeyboard.keyboard.KeyBoardState
+import com.chubbykeyboard.keyboard.KeyboardType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

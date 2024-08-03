@@ -1,19 +1,6 @@
-package com.chubbykeyboard
+package com.chubbykeyboard.keyboard.keys
 
 sealed class Key
-
-enum class Functional {
-
-    CapsLock,
-    ToSymbols,
-    ToAdditionalSymbols,
-    ToLetters,
-    ToNumPad,
-    Backspace,
-    Enter,
-    SwitchLanguage,
-    Space;
-}
 
 open class FunctionalKey(val function: Functional, open val label: String) : Key() {
 
@@ -34,7 +21,7 @@ open class FunctionalKey(val function: Functional, open val label: String) : Key
     }
 }
 
-sealed class PrintedKey(val alternatives: List<String>) : Key() {
+sealed class PrintedKey(val alternatives: String) : Key() {
 
     abstract val symbol: String
 
@@ -44,13 +31,13 @@ sealed class PrintedKey(val alternatives: List<String>) : Key() {
 
     class Symbol(
         override val symbol: String,
-        alternatives: List<String> = emptyList()
+        alternatives: String = ""
     ) :
         PrintedKey(alternatives) {
 
     }
 
-    class Letter(private val letter: String, alternatives: List<String> = emptyList()) :
+    class Letter(private val letter: String, alternatives: String = "") :
         PrintedKey(alternatives) {
 
         private var isCapital: Boolean = false

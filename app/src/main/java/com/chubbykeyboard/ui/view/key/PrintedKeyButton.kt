@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
-import com.chubbykeyboard.PrintedKey
+import com.chubbykeyboard.keyboard.keys.PrintedKey
 import com.chubbykeyboard.ui.theme.PrintedKeyBrush
 import com.chubbykeyboard.ui.view.popup.AlternativesPopup
 import com.chubbykeyboard.util.debounceCombinedClickable
@@ -77,7 +77,7 @@ fun RowScope.PrintedKeyButton(
             fontSize = 24.sp
         )
         if (pressed.value && longPressed.value && key.alternatives.isNotEmpty()) {
-            val alternatives = key.alternatives.map { PrintedKey.Letter(it) }
+            val alternatives = key.alternatives.split(",").map { PrintedKey.Letter(it) }
                 .onEach { it.setCapital(isShiftedParam) }
             AlternativesPopup(alternatives, dragGesturePosition, rootPosition) {
                 selectedPromptLetter.value = it

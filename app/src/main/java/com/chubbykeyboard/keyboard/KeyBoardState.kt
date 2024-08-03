@@ -1,6 +1,6 @@
-package com.chubbykeyboard.ui.state
+package com.chubbykeyboard.keyboard
 
-import com.chubbykeyboard.Key
+import com.chubbykeyboard.keyboard.keys.Key
 
 sealed class KeyBoardState {
 

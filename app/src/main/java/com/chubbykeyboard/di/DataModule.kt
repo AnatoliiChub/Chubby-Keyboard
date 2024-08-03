@@ -1,11 +1,11 @@
 package com.chubbykeyboard.di
 
+import com.chubbykeyboard.data.parser.KeyDeserializer
 import com.chubbykeyboard.data.repo.AvailableLocalesRepository
 import com.chubbykeyboard.data.repo.CachedKeyMatrixRepository
 import com.chubbykeyboard.data.repo.KeyMatrixRepository
-import com.chubbykeyboard.data.parser.KeyTypeAdapter
 import com.chubbykeyboard.data.repo.LocalesRepository
-import com.chubbykeyboard.Key
+import com.chubbykeyboard.keyboard.keys.Key
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -29,5 +29,7 @@ class DataModule {
 
     @Provides
     fun provideGson(): Gson =
-        GsonBuilder().registerTypeAdapter(Key::class.java, KeyTypeAdapter()).create()
+        GsonBuilder()
+            .registerTypeHierarchyAdapter(Key::class.java, KeyDeserializer())
+            .create()
 }

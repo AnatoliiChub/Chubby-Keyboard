@@ -1,7 +1,7 @@
 package com.chubbykeyboard.data.parser
 
 import android.content.Context
-import com.chubbykeyboard.Key
+import com.chubbykeyboard.keyboard.keys.Key
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -18,12 +18,8 @@ class JsonKeyMatrixParser @Inject constructor(
         val inputStream = assetManager.open(fileName)
         val reader = InputStreamReader(inputStream)
         val jsonElement = JsonParser.parseReader(reader)
-        val jsonArray = jsonElement.asJsonArray
+//        val jsonArray = jsonElement.asJsonArray
 
-        return jsonArray.map { rowElement ->
-            rowElement.asJsonArray.map { keyElement ->
-                gson.fromJson(keyElement, Key::class.java)
-            }
-        }
+        return gson.fromJson(jsonElement, KeyMatrix::class.java).matrix
     }
 }
