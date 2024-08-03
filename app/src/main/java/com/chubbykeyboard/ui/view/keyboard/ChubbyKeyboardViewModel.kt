@@ -3,12 +3,13 @@ package com.chubbykeyboard.ui.view.keyboard
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
+import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
+import com.chubbykeyboard.domain.SwitchLanguageUseCase
 import com.chubbykeyboard.ui.state.KeyBoardParameters
 import com.chubbykeyboard.ui.state.KeyBoardState
 import com.chubbykeyboard.ui.state.KeyboardType
-import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
-import com.chubbykeyboard.domain.SwitchLanguageUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -16,6 +17,8 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import java.util.Locale
 
 
 class ChubbyKeyboardViewModel(
@@ -25,10 +28,14 @@ class ChubbyKeyboardViewModel(
 ) : ViewModel() {
     private val workDispatcher = Dispatchers.Default
     private val isCapsLockActive = MutableStateFlow(false)
-
-    // TODO: invoke on worker thread
-    private val currentLocale = MutableStateFlow(getCurrentSupportedLocaleUseCase.invoke())
+    private val currentLocale = MutableStateFlow(Locale.getDefault())
     private val keyboardType = MutableStateFlow(KeyboardType.LETTERS)
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            currentLocale.value = getCurrentSupportedLocaleUseCase.invoke()
+        }
+    }
 
     private val _uiState =
         combine(isCapsLockActive, currentLocale, keyboardType) { capsLock, locale, keyboardType ->
