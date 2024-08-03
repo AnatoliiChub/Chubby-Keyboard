@@ -1,18 +1,16 @@
 package com.chubbykeyboard.data
 
 import android.content.Context
-import com.chubbykeyboard.view.key.Functional
-import com.chubbykeyboard.view.key.FunctionalKey
 import com.chubbykeyboard.view.key.Key
-import com.chubbykeyboard.view.key.PrintedKey
-import com.google.gson.JsonObject
+import com.google.gson.Gson
 import com.google.gson.JsonParser
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.InputStreamReader
 import javax.inject.Inject
 
 class JsonKeyMatrixParser @Inject constructor(
-    @ApplicationContext val context: Context
+    @ApplicationContext val context: Context,
+    private val gson: Gson
 ) : KeyMatrixParser {
 
     override fun parse(fileName: String): List<List<Key>> {
@@ -24,43 +22,8 @@ class JsonKeyMatrixParser @Inject constructor(
 
         return jsonArray.map { rowElement ->
             rowElement.asJsonArray.map { keyElement ->
-                parseKey(keyElement.asJsonObject)
+                gson.fromJson(keyElement, Key::class.java)
             }
-        }
-    }
-
-    private fun parseKey(jsonObject: JsonObject): Key {
-        return when {
-            jsonObject.has("letter") -> {
-                val letter = jsonObject.get("letter").asString
-                val isCapital = jsonObject.get("isCapital")?.asBoolean ?: false
-                val alternatives = jsonObject.get("alternatives")?.asJsonArray?.map { it.asString } ?: emptyList()
-                PrintedKey.Letter(letter, alternatives).apply { setCapital(isCapital) }
-            }
-
-            jsonObject.has("symbol") -> {
-                val symbol = jsonObject.get("symbol").asString
-                val alternatives = jsonObject.get("alternatives")?.asJsonArray?.map { it.asString } ?: emptyList()
-                PrintedKey.Symbol(symbol, alternatives)
-            }
-
-            jsonObject.has("function") -> {
-                val label = jsonObject.get("label").asString
-                when (val function = jsonObject.get("function").asString) {
-                    "CapsLock" -> FunctionalKey.CapsLock(jsonObject.get("isCapsLock")?.asBoolean ?: false)
-                    "ToSymbols" -> FunctionalKey(Functional.ToSymbols, label)
-                    "Backspace" -> FunctionalKey(Functional.Backspace, label)
-                    "Enter" -> FunctionalKey(Functional.Enter, label)
-                    "SwitchLanguage" -> FunctionalKey(Functional.SwitchLanguage, label)
-                    "Space" -> FunctionalKey(Functional.Space, label)
-                    "ToLetters" -> FunctionalKey(Functional.ToLetters, label)
-                    "ToNumPad" -> FunctionalKey(Functional.ToNumPad, label)
-                    "ToAdditionalSymbols" -> FunctionalKey(Functional.ToAdditionalSymbols, label)
-                    else -> throw IllegalArgumentException("Unknown function: $function")
-                }
-            }
-
-            else -> throw IllegalArgumentException("Unknown key type")
         }
     }
 }

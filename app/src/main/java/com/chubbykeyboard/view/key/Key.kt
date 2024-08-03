@@ -28,11 +28,19 @@ open class FunctionalKey(val function: Functional, open val label: String) : Key
         override val label: String
             get() = with(labels) { if (isCapsLock) first else second }
     }
+
+    override fun toString(): String {
+        return "FunctionalKey(function=$function, label='$label')"
+    }
 }
 
 sealed class PrintedKey(val alternatives: List<String>) : Key() {
 
     abstract val symbol: String
+
+    override fun toString(): String {
+        return "PrintedKey(alternatives=$alternatives, symbol='$symbol')"
+    }
 
     class Symbol(
         override val symbol: String,
