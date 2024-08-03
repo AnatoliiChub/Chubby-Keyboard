@@ -9,7 +9,6 @@ import com.chubbykeyboard.ui.state.KeyBoardParameters
 import com.chubbykeyboard.ui.state.KeyBoardState
 import com.chubbykeyboard.ui.state.KeyboardType
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -19,7 +18,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.Locale
-
 
 class ChubbyKeyboardViewModel(
     private val provideKeyMatrixUseCase: ProvideKeyMatrixUseCase,
@@ -32,7 +30,7 @@ class ChubbyKeyboardViewModel(
     private val keyboardType = MutableStateFlow(KeyboardType.LETTERS)
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(workDispatcher) {
             currentLocale.value = getCurrentSupportedLocaleUseCase.invoke()
         }
     }
@@ -67,6 +65,8 @@ class ChubbyKeyboardViewModel(
     }
 
     fun switchLanguage() {
-        currentLocale.value = switchLanguageUseCase.switchToNextLanguage(currentLocale.value)
+        viewModelScope.launch(workDispatcher) {
+            currentLocale.value = switchLanguageUseCase.switchToNextLanguage(currentLocale.value)
+        }
     }
 }
