@@ -4,7 +4,6 @@ import com.chubbykeyboard.view.key.Functional
 import com.chubbykeyboard.view.key.FunctionalKey
 import com.chubbykeyboard.view.key.Key
 import com.chubbykeyboard.view.key.PrintedKey
-import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
@@ -14,13 +13,7 @@ import javax.inject.Inject
 class KeyTypeAdapter @Inject constructor() : TypeAdapter<Key>() {
 
     override fun write(out: JsonWriter, value: Key) {
-        val jsonObject = JsonObject()
-        when (value) {
-            is PrintedKey.Letter -> jsonObject.addProperty("letter", value.symbol)
-            is PrintedKey.Symbol -> jsonObject.addProperty("symbol", value.symbol)
-            is FunctionalKey.CapsLock -> jsonObject.addProperty("function", "CapsLock")
-            is FunctionalKey -> jsonObject.addProperty("function", value.function.name)
-        }
+        //Implement write
     }
 
     override fun read(reader: JsonReader): Key {
