@@ -1,4 +1,4 @@
-package com.chubbykeyboard.data
+package com.chubbykeyboard.data.repo
 
 import com.chubbykeyboard.view.key.Key
 import com.chubbykeyboard.view.keyboard.KeyboardType

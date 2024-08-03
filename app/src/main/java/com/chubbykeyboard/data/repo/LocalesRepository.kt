@@ -1,4 +1,4 @@
-package com.chubbykeyboard.data
+package com.chubbykeyboard.data.repo
 
 import java.util.Locale
 

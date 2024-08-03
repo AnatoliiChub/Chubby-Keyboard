@@ -1,6 +1,6 @@
 package com.chubbykeyboard.domain
 
-import com.chubbykeyboard.data.LocalesRepository
+import com.chubbykeyboard.data.repo.LocalesRepository
 import com.chubbykeyboard.data.SupportedLanguages
 import java.util.Locale
 import javax.inject.Inject

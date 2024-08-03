@@ -1,10 +1,10 @@
 package com.chubbykeyboard.di
 
-import com.chubbykeyboard.data.AvailableLocalesRepository
-import com.chubbykeyboard.data.CachedKeyMatrixRepository
-import com.chubbykeyboard.data.KeyMatrixRepository
-import com.chubbykeyboard.data.KeyTypeAdapter
-import com.chubbykeyboard.data.LocalesRepository
+import com.chubbykeyboard.data.repo.AvailableLocalesRepository
+import com.chubbykeyboard.data.repo.CachedKeyMatrixRepository
+import com.chubbykeyboard.data.repo.KeyMatrixRepository
+import com.chubbykeyboard.data.parser.KeyTypeAdapter
+import com.chubbykeyboard.data.repo.LocalesRepository
 import com.chubbykeyboard.view.key.Key
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

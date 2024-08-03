@@ -1,4 +1,4 @@
-package com.chubbykeyboard.data
+package com.chubbykeyboard.data.parser
 
 import android.content.Context
 import com.chubbykeyboard.view.key.Key

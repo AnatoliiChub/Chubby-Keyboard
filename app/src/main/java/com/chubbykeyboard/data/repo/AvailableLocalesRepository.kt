@@ -1,4 +1,4 @@
-package com.chubbykeyboard.data
+package com.chubbykeyboard.data.repo
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
