@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view.keyboard
+package com.chubbykeyboard.ui.view.keyboard
 
 import android.annotation.SuppressLint
 import android.content.Context

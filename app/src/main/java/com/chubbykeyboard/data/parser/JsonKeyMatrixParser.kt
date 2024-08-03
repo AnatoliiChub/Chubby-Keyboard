@@ -1,7 +1,7 @@
 package com.chubbykeyboard.data.parser
 
 import android.content.Context
-import com.chubbykeyboard.view.key.Key
+import com.chubbykeyboard.Key
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import dagger.hilt.android.qualifiers.ApplicationContext

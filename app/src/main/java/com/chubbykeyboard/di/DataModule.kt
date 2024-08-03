@@ -5,7 +5,7 @@ import com.chubbykeyboard.data.repo.CachedKeyMatrixRepository
 import com.chubbykeyboard.data.repo.KeyMatrixRepository
 import com.chubbykeyboard.data.parser.KeyTypeAdapter
 import com.chubbykeyboard.data.repo.LocalesRepository
-import com.chubbykeyboard.view.key.Key
+import com.chubbykeyboard.Key
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

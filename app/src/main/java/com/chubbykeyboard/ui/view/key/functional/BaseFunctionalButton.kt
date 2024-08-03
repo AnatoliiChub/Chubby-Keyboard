@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view.key.functional
+package com.chubbykeyboard.ui.view.key.functional
 
 
 import androidx.compose.foundation.background
@@ -22,9 +22,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.chubbykeyboard.debounceClickable
+import com.chubbykeyboard.FunctionalKey
+import com.chubbykeyboard.util.debounceClickable
 import com.chubbykeyboard.ui.theme.FunctionalKeyBrush
-import com.chubbykeyboard.view.key.FunctionalKey
 
 @Composable
 fun RowScope.BaseFunctionalButton(

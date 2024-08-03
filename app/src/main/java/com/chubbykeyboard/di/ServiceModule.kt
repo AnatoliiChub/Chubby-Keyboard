@@ -5,7 +5,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
 import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
 import com.chubbykeyboard.domain.SwitchLanguageUseCase
-import com.chubbykeyboard.view.keyboard.ChubbyKeyboardViewModel
+import com.chubbykeyboard.ui.view.keyboard.ChubbyKeyboardViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

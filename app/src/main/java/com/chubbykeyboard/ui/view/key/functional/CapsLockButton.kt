@@ -1,10 +1,10 @@
-package com.chubbykeyboard.view.key.functional
+package com.chubbykeyboard.ui.view.key.functional
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.sp
-import com.chubbykeyboard.view.key.FunctionalKey
+import com.chubbykeyboard.FunctionalKey
 
 @Composable
 fun RowScope.CapsLockButton(

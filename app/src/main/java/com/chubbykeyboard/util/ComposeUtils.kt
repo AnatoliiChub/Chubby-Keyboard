@@ -1,4 +1,4 @@
-package com.chubbykeyboard
+package com.chubbykeyboard.util
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Indication

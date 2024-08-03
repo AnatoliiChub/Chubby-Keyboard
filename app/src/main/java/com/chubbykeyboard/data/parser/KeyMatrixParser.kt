@@ -1,6 +1,6 @@
 package com.chubbykeyboard.data.parser
 
-import com.chubbykeyboard.view.key.Key
+import com.chubbykeyboard.Key
 
 interface KeyMatrixParser {
 

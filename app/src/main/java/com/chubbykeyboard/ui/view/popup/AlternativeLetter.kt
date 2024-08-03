@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view.popup
+package com.chubbykeyboard.ui.view.popup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

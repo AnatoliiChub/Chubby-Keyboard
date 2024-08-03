@@ -1,8 +1,11 @@
-package com.chubbykeyboard.view.keyboard
+package com.chubbykeyboard.ui.view.keyboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
+import com.chubbykeyboard.ui.state.KeyBoardParameters
+import com.chubbykeyboard.ui.state.KeyBoardState
+import com.chubbykeyboard.ui.state.KeyboardType
 import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
 import com.chubbykeyboard.domain.SwitchLanguageUseCase
 import kotlinx.coroutines.Dispatchers

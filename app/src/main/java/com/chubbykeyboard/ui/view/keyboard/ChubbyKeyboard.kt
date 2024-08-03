@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view.keyboard
+package com.chubbykeyboard.ui.view.keyboard
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,30 +16,24 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.ChubbyIMEService
+import com.chubbykeyboard.Functional
 import com.chubbykeyboard.ui.theme.BackgroundColor
 import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
-import com.chubbykeyboard.view.key.Functional
-import com.chubbykeyboard.view.key.Functional.Backspace
-import com.chubbykeyboard.view.key.Functional.Enter
-import com.chubbykeyboard.view.key.Functional.Space
-import com.chubbykeyboard.view.key.Functional.SwitchLanguage
-import com.chubbykeyboard.view.key.Functional.ToAdditionalSymbols
-import com.chubbykeyboard.view.key.Functional.ToLetters
-import com.chubbykeyboard.view.key.Functional.ToNumPad
-import com.chubbykeyboard.view.key.Functional.ToSymbols
-import com.chubbykeyboard.view.key.FunctionalKey
-import com.chubbykeyboard.view.key.FunctionalKey.CapsLock
-import com.chubbykeyboard.view.key.PrintedKey
-import com.chubbykeyboard.view.key.PrintedKeyButton
-import com.chubbykeyboard.view.key.functional.BackSpaceButton
-import com.chubbykeyboard.view.key.functional.CapsLockButton
-import com.chubbykeyboard.view.key.functional.EnterButton
-import com.chubbykeyboard.view.key.functional.SpaceButton
-import com.chubbykeyboard.view.key.functional.SwitchLanguageButton
-import com.chubbykeyboard.view.key.functional.ToAdditionalSymbolsButton
-import com.chubbykeyboard.view.key.functional.ToNumPadButton
-import com.chubbykeyboard.view.key.functional.ToSLettersButton
-import com.chubbykeyboard.view.key.functional.ToSymbolsButton
+import com.chubbykeyboard.Functional.Backspace
+import com.chubbykeyboard.Functional.Enter
+import com.chubbykeyboard.Functional.Space
+import com.chubbykeyboard.Functional.SwitchLanguage
+import com.chubbykeyboard.Functional.ToAdditionalSymbols
+import com.chubbykeyboard.Functional.ToLetters
+import com.chubbykeyboard.Functional.ToNumPad
+import com.chubbykeyboard.Functional.ToSymbols
+import com.chubbykeyboard.FunctionalKey
+import com.chubbykeyboard.FunctionalKey.CapsLock
+import com.chubbykeyboard.ui.state.KeyBoardState
+import com.chubbykeyboard.PrintedKey
+import com.chubbykeyboard.ui.view.key.PrintedKeyButton
+import com.chubbykeyboard.ui.view.key.functional.*
+
 
 @Composable
 fun ChubbyKeyboard(
@@ -117,6 +111,7 @@ private fun Keyboard(
                                     ToAdditionalSymbols -> ToAdditionalSymbolsButton(key) {
                                         // TODO: Implement listener
                                     }
+
                                     ToNumPad -> ToNumPadButton(key) {
                                         // TODO: Implement listener
                                     }

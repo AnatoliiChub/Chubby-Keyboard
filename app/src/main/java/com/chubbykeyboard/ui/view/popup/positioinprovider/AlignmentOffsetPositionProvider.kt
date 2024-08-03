@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view.popup.positioinprovider
+package com.chubbykeyboard.ui.view.popup.positioinprovider
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.IntOffset

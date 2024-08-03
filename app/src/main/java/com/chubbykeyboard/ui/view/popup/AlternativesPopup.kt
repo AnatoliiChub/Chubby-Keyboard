@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view.popup
+package com.chubbykeyboard.ui.view.popup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,10 +18,10 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
-import com.chubbykeyboard.ceilDiv
+import com.chubbykeyboard.PrintedKey
 import com.chubbykeyboard.ui.theme.AlternativeBackground
-import com.chubbykeyboard.view.key.PrintedKey
-import com.chubbykeyboard.view.popup.positioinprovider.TrackablePositionProvider
+import com.chubbykeyboard.ui.view.popup.positioinprovider.TrackablePositionProvider
+import com.chubbykeyboard.util.ceilDiv
 
 private const val POPUP_VERTICAL_OFFSET = -64
 

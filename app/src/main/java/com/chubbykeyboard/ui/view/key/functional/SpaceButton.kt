@@ -1,21 +1,19 @@
-package com.chubbykeyboard.view.key.functional
+package com.chubbykeyboard.ui.view.key.functional
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.chubbykeyboard.view.key.FunctionalKey
+import com.chubbykeyboard.FunctionalKey
 
 @Composable
-fun RowScope.ToNumPadButton(
+fun RowScope.SpaceButton(
     key: FunctionalKey,
     onPress: () -> Unit,
 ) {
     BaseFunctionalButton(
         key = key,
+        weight = 2.5f,
+        fontSize = 14.sp,
         onClick = onPress,
-        fontSize = 16.sp,
-        fontWeight = FontWeight.Bold,
-        maxLines = 2
     )
 }

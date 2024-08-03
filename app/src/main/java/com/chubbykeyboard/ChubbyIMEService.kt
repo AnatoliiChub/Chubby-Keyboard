@@ -15,8 +15,8 @@ import androidx.savedstate.SavedStateRegistry
 import androidx.savedstate.SavedStateRegistryController
 import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
-import com.chubbykeyboard.view.keyboard.ChubbyKeyboardView
-import com.chubbykeyboard.view.keyboard.ChubbyKeyboardViewModel
+import com.chubbykeyboard.ui.view.keyboard.ChubbyKeyboardView
+import com.chubbykeyboard.ui.view.keyboard.ChubbyKeyboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

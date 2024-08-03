@@ -1,8 +1,8 @@
 package com.chubbykeyboard.domain
 
 import com.chubbykeyboard.data.repo.KeyMatrixRepository
-import com.chubbykeyboard.view.key.Key
-import com.chubbykeyboard.view.keyboard.KeyboardType
+import com.chubbykeyboard.Key
+import com.chubbykeyboard.ui.state.KeyboardType
 import java.util.Locale
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.chubbykeyboard
+package com.chubbykeyboard.util
 
 import kotlin.math.absoluteValue
 import kotlin.math.sign

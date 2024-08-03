@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view.key
+package com.chubbykeyboard.ui.view.key
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -26,9 +26,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
-import com.chubbykeyboard.debounceCombinedClickable
+import com.chubbykeyboard.PrintedKey
 import com.chubbykeyboard.ui.theme.PrintedKeyBrush
-import com.chubbykeyboard.view.popup.AlternativesPopup
+import com.chubbykeyboard.ui.view.popup.AlternativesPopup
+import com.chubbykeyboard.util.debounceCombinedClickable
 import java.util.Locale
 
 @Composable
@@ -76,7 +77,8 @@ fun RowScope.PrintedKeyButton(
             fontSize = 24.sp
         )
         if (pressed.value && longPressed.value && key.alternatives.isNotEmpty()) {
-            val alternatives = key.alternatives.map { PrintedKey.Letter(it) }.onEach { it.setCapital(isShiftedParam) }
+            val alternatives = key.alternatives.map { PrintedKey.Letter(it) }
+                .onEach { it.setCapital(isShiftedParam) }
             AlternativesPopup(alternatives, dragGesturePosition, rootPosition) {
                 selectedPromptLetter.value = it
             }

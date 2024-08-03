@@ -1,4 +1,4 @@
-package com.chubbykeyboard.view.key
+package com.chubbykeyboard
 
 sealed class Key
 
