@@ -2,141 +2,114 @@
   "matrix": [
     [
       {
-        "isCapital": false,
         "letter": "q",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "w",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "e",
         "alternatives": "è,ē,ê,ë,é"
       },
       {
-        "isCapital": false,
         "letter": "r",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "t",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "y",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "u",
         "alternatives": "û,ū,ü,ù,ú"
       },
       {
-        "isCapital": false,
         "letter": "i",
         "alternatives": "î,ì,ï,ī,í"
       },
       {
-        "isCapital": false,
         "letter": "o",
         "alternatives": "õ,ō,ø,œ,ò,ö,ô,ó"
       },
       {
-        "isCapital": false,
         "letter": "p",
         "alternatives": ""
       }
     ],
     [
       {
-        "isCapital": false,
         "letter": "a",
         "alternatives": "à,á,â,ä,æ,ã,å,ā"
       },
       {
-        "isCapital": false,
         "letter": "s",
         "alternatives": "ß"
       },
       {
-        "isCapital": false,
         "letter": "d",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "f",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "g",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "h",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "j",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "k",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "l",
         "alternatives": ""
       }
     ],
     [
       {
-        "isCapsLock": false,
         "function": "CapsLock",
         "label": "⇧"
       },
       {
-        "isCapital": false,
         "letter": "z",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "x",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "c",
         "alternatives": "ç"
       },
       {
-        "isCapital": false,
         "letter": "v",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "b",
         "alternatives": ""
       },
       {
-        "isCapital": false,
         "letter": "n",
         "alternatives": "ñ"
       },
       {
-        "isCapital": false,
         "letter": "m",
         "alternatives": ""
       },

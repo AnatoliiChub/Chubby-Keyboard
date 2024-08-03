@@ -18,8 +18,11 @@ class JsonKeyMatrixParser @Inject constructor(
         val inputStream = assetManager.open(fileName)
         val reader = InputStreamReader(inputStream)
         val jsonElement = JsonParser.parseReader(reader)
-//        val jsonArray = jsonElement.asJsonArray
 
         return gson.fromJson(jsonElement, KeyMatrix::class.java).matrix
     }
 }
+
+private data class KeyMatrix(
+    val matrix: List<List<Key>>
+)
