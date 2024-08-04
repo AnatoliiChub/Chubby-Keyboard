@@ -17,16 +17,16 @@ open class FunctionalKey(val function: Functional, open val label: String) : Key
     }
 }
 
-sealed class PrintedKey(val alternatives: String) : Key() {
+sealed class PrintedKey(val alternatives: String?) : Key() {
 
     abstract val symbol: String
 
     class Symbol(
         override val symbol: String,
-        alternatives: String = ""
+        alternatives: String?
     ) : PrintedKey(alternatives)
 
-    class Letter(private val letter: String, alternatives: String = "") :
+    class Letter(private val letter: String, alternatives: String?) :
         PrintedKey(alternatives) {
 
         private var isCapital: Boolean = false

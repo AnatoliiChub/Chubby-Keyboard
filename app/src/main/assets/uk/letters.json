@@ -2,148 +2,153 @@
   "matrix": [
     [
       {
-        "letter": "й",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "й"
       },
       {
-        "letter": "ц",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "ц"
       },
       {
-        "letter": "у",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "у"
       },
       {
-        "letter": "к",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "к"
       },
       {
+        "isCapital": false,
         "letter": "е",
         "alternatives": "ё"
       },
       {
-        "letter": "н",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "н"
       },
       {
-        "letter": "г",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "г"
       },
       {
-        "letter": "ш",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "ш"
       },
       {
-        "letter": "щ",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "щ"
       },
       {
-        "letter": "з",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "з"
       },
       {
-        "letter": "х",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "х"
       },
       {
-        "letter": "ї",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "ї"
       }
     ],
     [
       {
-        "letter": "ф",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "ф"
       },
       {
-        "letter": "і",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "і"
       },
       {
-        "letter": "в",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "в"
       },
       {
-        "letter": "а",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "а"
       },
       {
-        "letter": "п",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "п"
       },
       {
-        "letter": "р",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "р"
       },
       {
-        "letter": "о",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "о"
       },
       {
-        "letter": "л",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "л"
       },
       {
-        "letter": "д",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "д"
       },
       {
-        "letter": "ж",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "ж"
       },
       {
+        "isCapital": false,
         "letter": "є",
         "alternatives": "э"
       },
       {
+        "isCapital": false,
         "letter": "\u0027",
         "alternatives": "ʼ"
       }
     ],
     [
       {
+        "isCapsLock": false,
         "function": "CapsLock",
         "label": "⇧"
       },
       {
-        "letter": "я",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "я"
       },
       {
-        "letter": "ч",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "ч"
       },
       {
-        "letter": "с",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "с"
       },
       {
-        "letter": "м",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "м"
       },
       {
-        "letter": "и",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "и"
       },
       {
-        "letter": "т",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "т"
       },
       {
+        "isCapital": false,
         "letter": "ь",
-        "alternatives": "ъ,ы"
+        "alternatives": "ъы"
       },
       {
-        "letter": "б",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "б"
       },
       {
-        "letter": "ю",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "ю"
       },
       {
-        "letter": "ґ",
-        "alternatives": ""
+        "isCapital": false,
+        "letter": "ґ"
       },
       {
         "function": "Backspace",
@@ -156,8 +161,7 @@
         "label": "?123"
       },
       {
-        "symbol": ",",
-        "alternatives": ""
+        "symbol": ","
       },
       {
         "function": "SwitchLanguage",
@@ -169,7 +173,7 @@
       },
       {
         "symbol": ".",
-        "alternatives": "&,%,+,\",-,:,',@,;,/,),(,#,!,?,"
+        "alternatives": "&%+\"-:'@;/)(#!?"
       },
       {
         "function": "Enter",

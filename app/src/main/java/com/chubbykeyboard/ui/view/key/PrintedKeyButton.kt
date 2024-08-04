@@ -76,8 +76,8 @@ fun RowScope.PrintedKeyButton(
             text = key.symbol,
             fontSize = 24.sp
         )
-        if (pressed.value && longPressed.value && key.alternatives.isNotEmpty()) {
-            val alternatives = key.alternatives.split(",").map { PrintedKey.Letter(it) }
+        if (pressed.value && longPressed.value && !key.alternatives.isNullOrEmpty()) {
+            val alternatives = key.alternatives.toCharArray().map { PrintedKey.Letter(it.toString(), "") }
                 .onEach { it.setCapital(isShiftedParam) }
             AlternativesPopup(alternatives, dragGesturePosition, rootPosition) {
                 selectedPromptLetter.value = it

@@ -41,7 +41,8 @@ fun ChubbyKeyboard(
                 onCapsLockPressed = viewModel::onCapsLockPressed,
                 onSwitchLangPressed = viewModel::switchLanguage,
                 onToSymbolsPressed = viewModel::onToSymbolsPressed,
-                onToLettersPressed = viewModel::onToLettersPressed
+                onToLettersPressed = viewModel::onToLettersPressed,
+                onToAdditionalSymbolsPressed = viewModel::onToAdditionalSymbolsPressed
             )
         }
     }
@@ -66,7 +67,8 @@ private fun Keyboard(
     onCapsLockPressed: () -> Unit,
     onSwitchLangPressed: () -> Unit,
     onToSymbolsPressed: () -> Unit,
-    onToLettersPressed: () -> Unit
+    onToLettersPressed: () -> Unit,
+    onToAdditionalSymbolsPressed: () -> Unit
 ) {
     val isCapsLock = state.isCapsLockActive
     val service = (LocalContext.current as ChubbyIMEService)
@@ -95,20 +97,15 @@ private fun Keyboard(
                                     Backspace -> BackSpaceButton(key) {
                                         service.currentInputConnection.deleteSurroundingText(1, 0)
                                     }
-
                                     Enter -> EnterButton(key) { service.sendKeyChar('\n') }
                                     SwitchLanguage -> SwitchLanguageButton(key) { onSwitchLangPressed() }
                                     Space -> SpaceButton(key) { service.sendKeyChar(' ') }
                                     ToSymbols -> ToSymbolsButton(key) { onToSymbolsPressed() }
                                     ToLetters -> ToSLettersButton(key) { onToLettersPressed() }
-                                    ToAdditionalSymbols -> ToAdditionalSymbolsButton(key) {
-                                        // TODO: Implement listener
-                                    }
-
+                                    ToAdditionalSymbols -> ToAdditionalSymbolsButton(key) { onToAdditionalSymbolsPressed() }
                                     ToNumPad -> ToNumPadButton(key) {
                                         // TODO: Implement listener
                                     }
-
                                     //Already handled
                                     CapsLock -> Unit
                                 }

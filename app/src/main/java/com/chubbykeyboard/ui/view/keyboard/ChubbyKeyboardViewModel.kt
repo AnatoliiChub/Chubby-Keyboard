@@ -69,4 +69,8 @@ class ChubbyKeyboardViewModel(
             currentLocale.value = switchLanguageUseCase.switchToNextLanguage(currentLocale.value)
         }
     }
+
+    fun onToAdditionalSymbolsPressed() {
+        keyboardType.value = KeyboardType.ADDITIONAL_SYMBOLS
+    }
 }

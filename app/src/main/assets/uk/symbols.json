@@ -39,13 +39,12 @@
       },
       {
         "symbol": "0",
-        "alternatives": "∅,ⁿ,⁰"
+        "alternatives": "∅ⁿ⁰"
       }
     ],
     [
       {
-        "symbol": "@",
-        "alternatives": ""
+        "symbol": "@"
       },
       {
         "symbol": "#",
@@ -53,19 +52,17 @@
       },
       {
         "symbol": "₴",
-        "alternatives": "€,₹,¥,₱,$,£,¢"
+        "alternatives": "€₹¥₱$£¢"
       },
       {
-        "symbol": "_",
-        "alternatives": ""
+        "symbol": "_"
       },
       {
-        "symbol": "&",
-        "alternatives": ""
+        "symbol": "&"
       },
       {
         "symbol": "-",
-        "alternatives": "—,−,—,−"
+        "alternatives": "—−—−"
       },
       {
         "symbol": "+",
@@ -73,15 +70,14 @@
       },
       {
         "symbol": "(",
-        "alternatives": "[,{,<"
+        "alternatives": "[{<"
       },
       {
         "symbol": ")",
-        "alternatives": "],},>"
+        "alternatives": "]}>"
       },
       {
-        "symbol": "/",
-        "alternatives": ""
+        "symbol": "/"
       }
     ],
     [
@@ -91,23 +87,21 @@
       },
       {
         "symbol": "*",
-        "alternatives": "★,†,‡"
+        "alternatives": "★†‡"
       },
       {
         "symbol": "\"",
-        "alternatives": "“,„,«,»"
+        "alternatives": "“„«»"
       },
       {
         "symbol": "'",
-        "alternatives": "‘,’,‹,›"
+        "alternatives": "‘’‹›"
       },
       {
-        "symbol": ":",
-        "alternatives": ""
+        "symbol": ":"
       },
       {
-        "symbol": ";",
-        "alternatives": ""
+        "symbol": ";"
       },
       {
         "symbol": "!",
@@ -115,7 +109,7 @@
       },
       {
         "symbol": "?",
-        "alternatives": "¿,‽"
+        "alternatives": "¿‽"
       },
       {
         "function": "Backspace",
@@ -128,8 +122,7 @@
         "label": "АБВ"
       },
       {
-        "symbol": ",",
-        "alternatives": ""
+        "symbol": ","
       },
       {
         "function": "ToNumPad",

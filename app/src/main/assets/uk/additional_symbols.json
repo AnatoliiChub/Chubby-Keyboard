@@ -1,0 +1,135 @@
+{
+  "matrix": [
+    [
+      {
+        "symbol": "~"
+      },
+      {
+        "symbol": "`"
+      },
+      {
+        "symbol": "|"
+      },
+      {
+        "symbol": "•",
+        "alternatives": "♣♠♪♥♦"
+      },
+      {
+        "symbol": "√"
+      },
+      {
+        "symbol": "π",
+        "alternatives": "ΩΠμ"
+      },
+      {
+        "symbol": "÷"
+      },
+      {
+        "symbol": "×"
+      },
+      {
+        "symbol": "¶",
+        "alternatives": "§"
+      },
+      {
+        "symbol": "∆"
+      }
+    ],
+    [
+      {
+        "symbol": "£"
+      },
+      {
+        "symbol": "€"
+      },
+      {
+        "symbol": "$",
+        "alternatives": "€₹¥₽£¢"
+      },
+      {
+        "symbol": "¢"
+      },
+      {
+        "symbol": "^",
+        "alternatives": "←↑↓→"
+      },
+      {
+        "symbol": "°",
+        "alternatives": "′″"
+      },
+      {
+        "symbol": "=",
+        "alternatives": "∞≠≈"
+      },
+      {
+        "symbol": "{",
+        "alternatives": "("
+      },
+      {
+        "symbol": "}",
+        "alternatives": ")"
+      },
+      {
+        "symbol": "\\"
+      }
+    ],
+    [
+      {
+        "function": "ToSymbols",
+        "label": "?123"
+      },
+      {
+        "symbol": "%",
+        "alternatives": "‰℅"
+      },
+      {
+        "symbol": "©"
+      },
+      {
+        "symbol": "®"
+      },
+      {
+        "symbol": "™"
+      },
+      {
+        "symbol": "✓"
+      },
+      {
+        "symbol": "["
+      },
+      {
+        "symbol": "]"
+      },
+      {
+        "function": "Backspace",
+        "label": "⌫"
+      }
+    ],
+    [
+      {
+        "function": "ToLetters",
+        "label": "ABC"
+      },
+      {
+        "symbol": "<",
+        "alternatives": "«≤‹⟨"
+      },
+      {
+        "function": "ToNumPad",
+        "label": "12\n34"
+      },
+      {
+        "function": "Space",
+        "label": "English"
+      },
+      {
+        "symbol": ">",
+        "alternatives": "»≥›⟩"
+      },
+      {
+        "function": "Enter",
+        "label": "⏎"
+      }
+    ]
+  ]
+}

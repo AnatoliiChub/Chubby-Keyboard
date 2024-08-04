@@ -2,82 +2,69 @@
   "matrix": [
     [
       {
-        "letter": "q",
-        "alternatives": ""
+        "letter": "q"
       },
       {
-        "letter": "w",
-        "alternatives": ""
+        "letter": "w"
       },
       {
         "letter": "e",
-        "alternatives": "è,ē,ê,ë,é"
+        "alternatives": "èēêëé"
       },
       {
-        "letter": "r",
-        "alternatives": ""
+        "letter": "r"
       },
       {
-        "letter": "t",
-        "alternatives": ""
+        "letter": "t"
       },
       {
-        "letter": "y",
-        "alternatives": ""
+        "letter": "y"
       },
       {
         "letter": "u",
-        "alternatives": "û,ū,ü,ù,ú"
+        "alternatives": "ûūüùú"
       },
       {
         "letter": "i",
-        "alternatives": "î,ì,ï,ī,í"
+        "alternatives": "îìïīí"
       },
       {
         "letter": "o",
-        "alternatives": "õ,ō,ø,œ,ò,ö,ô,ó"
+        "alternatives": "õōøœòöôó"
       },
       {
-        "letter": "p",
-        "alternatives": ""
+        "letter": "p"
       }
     ],
     [
       {
         "letter": "a",
-        "alternatives": "à,á,â,ä,æ,ã,å,ā"
+        "alternatives": "àáâäæãåā"
       },
       {
         "letter": "s",
         "alternatives": "ß"
       },
       {
-        "letter": "d",
-        "alternatives": ""
+        "letter": "d"
       },
       {
-        "letter": "f",
-        "alternatives": ""
+        "letter": "f"
       },
       {
-        "letter": "g",
-        "alternatives": ""
+        "letter": "g"
       },
       {
-        "letter": "h",
-        "alternatives": ""
+        "letter": "h"
       },
       {
-        "letter": "j",
-        "alternatives": ""
+        "letter": "j"
       },
       {
-        "letter": "k",
-        "alternatives": ""
+        "letter": "k"
       },
       {
-        "letter": "l",
-        "alternatives": ""
+        "letter": "l"
       }
     ],
     [
@@ -86,32 +73,27 @@
         "label": "⇧"
       },
       {
-        "letter": "z",
-        "alternatives": ""
+        "letter": "z"
       },
       {
-        "letter": "x",
-        "alternatives": ""
+        "letter": "x"
       },
       {
         "letter": "c",
         "alternatives": "ç"
       },
       {
-        "letter": "v",
-        "alternatives": ""
+        "letter": "v"
       },
       {
-        "letter": "b",
-        "alternatives": ""
+        "letter": "b"
       },
       {
         "letter": "n",
         "alternatives": "ñ"
       },
       {
-        "letter": "m",
-        "alternatives": ""
+        "letter": "m"
       },
       {
         "function": "Backspace",
@@ -124,8 +106,7 @@
         "label": "?123"
       },
       {
-        "symbol": ",",
-        "alternatives": ""
+        "symbol": ","
       },
       {
         "function": "SwitchLanguage",
@@ -137,7 +118,7 @@
       },
       {
         "symbol": ".",
-        "alternatives": "&,%,+,\",-,:,',@,;,/,),(,#,!,?,"
+        "alternatives": "&%+\"-:'@;/)(#!?"
       },
       {
         "function": "Enter",

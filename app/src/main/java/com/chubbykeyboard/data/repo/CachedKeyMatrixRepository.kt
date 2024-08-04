@@ -3,8 +3,8 @@ package com.chubbykeyboard.data.repo
 import androidx.collection.LruCache
 import com.chubbykeyboard.data.SupportedLanguages
 import com.chubbykeyboard.data.parser.JsonKeyMatrixParser
-import com.chubbykeyboard.keyboard.keys.Key
 import com.chubbykeyboard.keyboard.KeyboardType
+import com.chubbykeyboard.keyboard.keys.Key
 import java.util.Locale
 import javax.inject.Inject
 
@@ -17,6 +17,7 @@ class CachedKeyMatrixRepository @Inject constructor(
         private const val DEFAULT_CACHE_SIZE = 16
         const val DEFAULT_LETTER = "en/letters.json"
         const val DEFAULT_SYMBOLS = "en/symbols.json"
+        const val DEFAULT_ADDITIONAL_SYMBOLS = "en/additional_symbols.json"
     }
 
     private val cachedKeyMatrix = LruCache<String, List<List<Key>>>(DEFAULT_CACHE_SIZE)
@@ -31,6 +32,7 @@ class CachedKeyMatrixRepository @Inject constructor(
         val file = when (keyboardType) {
             KeyboardType.LETTERS -> language?.lettersFile ?: DEFAULT_LETTER
             KeyboardType.SYMBOLS -> language?.symbolsFile ?: DEFAULT_SYMBOLS
+            KeyboardType.ADDITIONAL_SYMBOLS -> language?.additionalSymbolsFile ?: DEFAULT_ADDITIONAL_SYMBOLS
             //TODO: add more keyboard types
             else -> ""
         }
