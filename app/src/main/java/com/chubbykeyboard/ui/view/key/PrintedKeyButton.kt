@@ -6,9 +6,8 @@ import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Text
@@ -33,7 +32,7 @@ import com.chubbykeyboard.util.debounceCombinedClickable
 import java.util.Locale
 
 @Composable
-fun RowScope.PrintedKeyButton(
+fun PrintedKeyButton(
     key: PrintedKey,
     isShiftedParam: Boolean,
 ) {
@@ -51,8 +50,7 @@ fun RowScope.PrintedKeyButton(
     Box(
         modifier = Modifier
             .fillMaxHeight()
-            .weight(if (pressed.value) 1.5f else 1f)
-            .padding(2.dp)
+            .fillMaxWidth()
             .debounceCombinedClickable(
                 interactionSource = interactionSource,
                 indication = rememberRipple(true),

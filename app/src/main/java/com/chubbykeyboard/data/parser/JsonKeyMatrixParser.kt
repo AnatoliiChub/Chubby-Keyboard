@@ -1,9 +1,12 @@
 package com.chubbykeyboard.data.parser
 
 import android.content.Context
+import com.chubbykeyboard.keyboard.keys.FunctionalKey
 import com.chubbykeyboard.keyboard.keys.Key
+import com.chubbykeyboard.keyboard.keys.PrintedKey
 import com.google.gson.Gson
 import com.google.gson.JsonParser
+import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.InputStreamReader
 import javax.inject.Inject
@@ -13,16 +16,19 @@ class JsonKeyMatrixParser @Inject constructor(
     private val gson: Gson
 ) : KeyMatrixParser {
 
-    override fun parse(fileName: String): List<List<Key>> {
+    override fun parse(fileName: String): KeyMatrix{
         val assetManager = context.assets
         val inputStream = assetManager.open(fileName)
         val reader = InputStreamReader(inputStream)
         val jsonElement = JsonParser.parseReader(reader)
-
-        return gson.fromJson(jsonElement, KeyMatrix::class.java).matrix
+        val isNumPad = jsonElement.asJsonObject.has("additionalOptions")
+        val clazz = if(isNumPad) KeyMatrix.NumPadMatrix::class.java else KeyMatrix::class.java
+        return gson.fromJson(jsonElement, clazz)
     }
 }
 
-private data class KeyMatrix(
+open class KeyMatrix(
     val matrix: List<List<Key>>
-)
+) {
+    class NumPadMatrix(matrix: List<List<Key>>, val additionalOptions: List<PrintedKey>, val additionalButton : FunctionalKey) : KeyMatrix(matrix)
+}

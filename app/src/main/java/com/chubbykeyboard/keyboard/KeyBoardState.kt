@@ -1,6 +1,6 @@
 package com.chubbykeyboard.keyboard
 
-import com.chubbykeyboard.keyboard.keys.Key
+import com.chubbykeyboard.data.parser.KeyMatrix
 
 sealed class KeyBoardState {
 
@@ -8,6 +8,6 @@ sealed class KeyBoardState {
 
     data class Content(
         val isCapsLockActive: Boolean,
-        val keyMatrix: List<List<Key>>
+        val keyMatrix: KeyMatrix
     ) : KeyBoardState()
 }

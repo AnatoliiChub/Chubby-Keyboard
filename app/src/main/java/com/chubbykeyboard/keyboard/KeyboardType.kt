@@ -4,5 +4,5 @@ enum class KeyboardType {
     LETTERS,
     SYMBOLS,
     ADDITIONAL_SYMBOLS,
-    NUMBER
+    NUMPAD
 }

@@ -8,10 +8,23 @@ enum class SupportedLanguages(
     val code: String,
     val lettersFile: String,
     val symbolsFile: String,
-    val additionalSymbolsFile : String
+    val additionalSymbolsFile: String,
+    val numpadFile: String = "en/numpad.json"
 ) {
-    ENGLISH("en", "en/letters.json", "en/symbols.json", "en/additional_symbols.json"),
-    UKRAINIAN("uk", "uk/letters.json", "uk/symbols.json", "uk/additional_symbols.json"), ;
+    ENGLISH(
+        "en",
+        "en/letters.json",
+        "en/symbols.json",
+        "en/additional_symbols.json",
+        "en/numpad.json"
+    ),
+    UKRAINIAN(
+        "uk",
+        "uk/letters.json",
+        "uk/symbols.json",
+        "uk/additional_symbols.json",
+        "uk/numpad.json"
+    ), ;
 
     companion object {
         fun fromCode(code: String) = entries.firstOrNull { it.code == code }

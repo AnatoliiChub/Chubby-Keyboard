@@ -1,22 +1,21 @@
 package com.chubbykeyboard.ui.view.key.functional
 
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.sp
-import com.chubbykeyboard.ui.theme.EnterKeyBrush
 import com.chubbykeyboard.keyboard.keys.FunctionalKey
+import com.chubbykeyboard.ui.theme.EnterKeyBrush
 
 @Composable
-fun RowScope.EnterButton(
+fun EnterButton(
     key: FunctionalKey,
-    onPress: () -> Unit,
+    onPress: () -> Unit
 ) {
     BaseFunctionalButton(
         key = key,
         fontSize = 36.sp,
         fontWeight = Bold,
         onClick = onPress,
-        backgroundBrushProvider = EnterKeyBrush
+        backgroundBrushProvider = EnterKeyBrush,
     )
 }

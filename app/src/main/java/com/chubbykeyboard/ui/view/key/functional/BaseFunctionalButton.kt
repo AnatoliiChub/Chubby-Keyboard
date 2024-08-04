@@ -5,9 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Text
@@ -23,15 +22,14 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.keyboard.keys.FunctionalKey
-import com.chubbykeyboard.util.debounceClickable
 import com.chubbykeyboard.ui.theme.FunctionalKeyBrush
+import com.chubbykeyboard.util.debounceClickable
 
 @Composable
-fun RowScope.BaseFunctionalButton(
+fun BaseFunctionalButton(
     key: FunctionalKey,
-    weight: Float = 1.5f,
     fontSize: TextUnit = 20.sp,
-    maxLines : Int = 1,
+    maxLines: Int = 1,
     fontWeight: FontWeight = Normal,
     onClick: () -> Unit,
     backgroundBrushProvider: (Boolean) -> Brush = FunctionalKeyBrush
@@ -42,8 +40,7 @@ fun RowScope.BaseFunctionalButton(
     Box(
         modifier = Modifier
             .fillMaxHeight()
-            .weight(weight)
-            .padding(2.dp)
+            .fillMaxWidth()
             .debounceClickable(
                 interactionSource = interactionSource,
                 indication = rememberRipple(true),

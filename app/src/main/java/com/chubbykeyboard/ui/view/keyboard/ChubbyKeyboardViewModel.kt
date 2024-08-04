@@ -24,22 +24,24 @@ class ChubbyKeyboardViewModel(
     private val switchLanguageUseCase: SwitchLanguageUseCase,
     private val getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase
 ) : ViewModel() {
+
     private val workDispatcher = Dispatchers.Default
     private val isCapsLockActive = MutableStateFlow(false)
     private val currentLocale = MutableStateFlow(Locale.getDefault())
     private val keyboardType = MutableStateFlow(KeyboardType.LETTERS)
-
-    init {
-        viewModelScope.launch(workDispatcher) {
-            currentLocale.value = getCurrentSupportedLocaleUseCase.invoke()
-        }
-    }
-
     private val _uiState =
         combine(isCapsLockActive, currentLocale, keyboardType) { capsLock, locale, keyboardType ->
             KeyBoardParameters(capsLock, locale, keyboardType)
         }
 
+    val router: FunctionalRouter = FunctionalRouter(
+        onCapsLockPressed = this::onCapsLockPressed,
+        onSwitchLangPressed = this::onSwitchLanguagePressed,
+        onToSymbolsPressed = this::onToSymbolsPressed,
+        onToLettersPressed = this::onToLettersPressed,
+        onToAdditionalSymbolsPressed = this::onToAdditionalSymbolsPressed,
+        onToNumPadPressed = this::onToNumPadPressed
+    )
 
     val uiState: StateFlow<KeyBoardState> = _uiState
         .map {
@@ -52,25 +54,35 @@ class ChubbyKeyboardViewModel(
             initialValue = KeyBoardState.Loading
         )
 
-    fun onToSymbolsPressed() {
-        keyboardType.value = KeyboardType.SYMBOLS
-    }
-
-    fun onToLettersPressed() {
-        keyboardType.value = KeyboardType.LETTERS
-    }
-
-    fun onCapsLockPressed() {
-        isCapsLockActive.value = !isCapsLockActive.value
-    }
-
-    fun switchLanguage() {
+    init {
         viewModelScope.launch(workDispatcher) {
-            currentLocale.value = switchLanguageUseCase.switchToNextLanguage(currentLocale.value)
+            currentLocale.value = getCurrentSupportedLocaleUseCase.invoke()
         }
     }
 
-    fun onToAdditionalSymbolsPressed() {
+    private fun onToSymbolsPressed() {
+        keyboardType.value = KeyboardType.SYMBOLS
+    }
+
+    private fun onToLettersPressed() {
+        keyboardType.value = KeyboardType.LETTERS
+    }
+
+    private fun onCapsLockPressed() {
+        isCapsLockActive.value = !isCapsLockActive.value
+    }
+
+    private fun onToAdditionalSymbolsPressed() {
         keyboardType.value = KeyboardType.ADDITIONAL_SYMBOLS
+    }
+
+    private fun onToNumPadPressed() {
+        keyboardType.value = KeyboardType.NUMPAD
+    }
+
+    private fun onSwitchLanguagePressed() {
+        viewModelScope.launch(workDispatcher) {
+            currentLocale.value = switchLanguageUseCase.switchToNextLanguage(currentLocale.value)
+        }
     }
 }

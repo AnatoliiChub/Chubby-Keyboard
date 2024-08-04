@@ -15,6 +15,10 @@ open class FunctionalKey(val function: Functional, open val label: String) : Key
         override val label: String
             get() = with(labels) { if (isCapsLock) first else second }
     }
+
+    override fun toString(): String {
+        return "FunctionalKey(function=$function, label='$label')"
+    }
 }
 
 sealed class PrintedKey(val alternatives: String?) : Key() {
