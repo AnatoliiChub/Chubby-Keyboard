@@ -2,6 +2,7 @@ package com.chubbykeyboard.ui.theme
 
 import androidx.compose.ui.graphics.Brush
 
+//TODO remove gradients
 val PrintedKeyBrush: (Boolean) -> Brush = { pressed ->
     Brush.horizontalGradient(
         if (pressed) listOf(
