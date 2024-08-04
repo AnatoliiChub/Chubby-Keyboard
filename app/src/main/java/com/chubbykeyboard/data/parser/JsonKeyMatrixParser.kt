@@ -6,7 +6,6 @@ import com.chubbykeyboard.keyboard.keys.Key
 import com.chubbykeyboard.keyboard.keys.PrintedKey
 import com.google.gson.Gson
 import com.google.gson.JsonParser
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.InputStreamReader
 import javax.inject.Inject
