@@ -98,7 +98,12 @@ private fun AdditionalOptionsPanel(
         item {
             state.additionalOptions.forEach { key ->
                 Box(modifier = Modifier.height(ADDITIONAL_OPTIONS_BUTTON_HEIGHT)) {
-                    PrintedKeyButton(key, false, MaterialTheme.colorScheme.secondary)
+                    PrintedKeyButton(
+                        key,
+                        false,
+                        MaterialTheme.colorScheme.secondary,
+                        MaterialTheme.colorScheme.onSecondary
+                    )
                 }
             }
         }
