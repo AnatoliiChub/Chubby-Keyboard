@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import com.chubbykeyboard.keyboard.KeyBoardState
 import com.chubbykeyboard.keyboard.keys.Functional.Backspace
 import com.chubbykeyboard.keyboard.keys.Functional.CapsLock
@@ -24,6 +23,8 @@ import com.chubbykeyboard.keyboard.keys.Functional.ToSymbols
 import com.chubbykeyboard.keyboard.keys.FunctionalKey
 import com.chubbykeyboard.keyboard.keys.PrintedKey
 import com.chubbykeyboard.service.ChubbyIMEService
+import com.chubbykeyboard.ui.theme.BUTTON_HEIGHT
+import com.chubbykeyboard.ui.theme.BUTTON_PADDING
 import com.chubbykeyboard.ui.view.key.PrintedKeyButton
 import com.chubbykeyboard.ui.view.key.functional.BackSpaceButton
 import com.chubbykeyboard.ui.view.key.functional.CapsLockButton
@@ -41,26 +42,20 @@ fun Keyboard(
 ) {
     val isCapsLock = state.isCapsLockActive
     val matrix = state.keyMatrix.matrix
-
-    Box(
-        modifier = Modifier.fillMaxWidth()
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
     ) {
-        Column(
-            modifier = Modifier
-                .padding(top = 4.dp, bottom = 4.dp)
-                .fillMaxWidth()
-        ) {
-            matrix.forEach { row ->
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
-                ) {
-                    row.forEach { key ->
-                        when (key) {
-                            is PrintedKey -> PrintedKeyLayout(key, isCapsLock)
-                            is FunctionalKey -> FunctionalKeyLayout(key, router, isCapsLock)
-                        }
+        matrix.forEach { row ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(BUTTON_HEIGHT),
+            ) {
+                row.forEach { key ->
+                    when (key) {
+                        is PrintedKey -> PrintedKeyWrapper(key, isCapsLock)
+                        is FunctionalKey -> FunctionalKeyWrapper(key, router, isCapsLock)
                     }
                 }
             }
@@ -69,11 +64,11 @@ fun Keyboard(
 }
 
 @Composable
-private fun RowScope.PrintedKeyLayout(key: PrintedKey, isCapsLock: Boolean) {
+private fun RowScope.PrintedKeyWrapper(key: PrintedKey, isCapsLock: Boolean) {
     Box(
         modifier = Modifier.Companion
             .weight(1f)
-            .padding(2.dp)
+            .padding(BUTTON_PADDING)
     ) {
         PrintedKeyButton(
             key, isCapsLock
@@ -82,7 +77,7 @@ private fun RowScope.PrintedKeyLayout(key: PrintedKey, isCapsLock: Boolean) {
 }
 
 @Composable
-private fun RowScope.FunctionalKeyLayout(
+private fun RowScope.FunctionalKeyWrapper(
     key: FunctionalKey,
     router: FunctionalRouter,
     isCapsLock: Boolean,
@@ -102,7 +97,7 @@ private fun RowScope.FunctionalKeyLayout(
                     else -> 1f
                 }
             )
-            .padding(2.dp)
+            .padding(BUTTON_PADDING)
     ) {
         when (key.function) {
             Backspace -> BackSpaceButton(key) { onBackspacePressed() }

@@ -10,7 +10,6 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonParseException
 import java.lang.reflect.Type
 
-
 class KeyDeserializer : JsonDeserializer<Key> {
 
     private val gson = Gson()
@@ -33,11 +32,8 @@ class KeyDeserializer : JsonDeserializer<Key> {
                     gson.fromJson(jsonString, FunctionalKey::class.java)
                 }
             }
+
             else -> throw JsonParseException("Unknown key type  $jsonString")
         }
     }
 }
-
-
-
-

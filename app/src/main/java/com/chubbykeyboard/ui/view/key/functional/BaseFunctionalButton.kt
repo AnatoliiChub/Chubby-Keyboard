@@ -1,6 +1,5 @@
 package com.chubbykeyboard.ui.view.key.functional
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
@@ -20,9 +19,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.keyboard.keys.FunctionalKey
+import com.chubbykeyboard.ui.theme.ROUNDED_CORNERS_RADIUS
 import com.chubbykeyboard.ui.theme.RippleAlpha
 import com.chubbykeyboard.util.debounceClickable
 
@@ -37,7 +36,7 @@ fun BaseFunctionalButton(
     textColor: Color = MaterialTheme.colorScheme.onSecondary
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    val shape = RoundedCornerShape(8.dp)
+    val shape = RoundedCornerShape(ROUNDED_CORNERS_RADIUS)
 
     Box(
         modifier = Modifier

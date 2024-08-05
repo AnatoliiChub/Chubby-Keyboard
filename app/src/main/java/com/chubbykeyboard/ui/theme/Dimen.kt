@@ -1,0 +1,12 @@
+package com.chubbykeyboard.ui.theme
+
+import androidx.compose.ui.unit.dp
+
+val KEYBOARD_HEIGHT = 228.dp
+val BUTTON_HEIGHT = 56.dp
+val PROGRESS_BAR_SIZE = 96.dp
+val KEYBOARD_VERTICAL_PADDING= 4.dp
+val BUTTON_PADDING = 2.dp
+val ADDITIONAL_OPTIONS_HEIGHT = 168.dp
+val ADDITIONAL_OPTIONS_BUTTON_HEIGHT = ADDITIONAL_OPTIONS_HEIGHT / 4
+val ROUNDED_CORNERS_RADIUS = 6.dp

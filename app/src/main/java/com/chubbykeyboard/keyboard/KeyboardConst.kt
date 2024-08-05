@@ -1,4 +1,4 @@
-package com.chubbykeyboard
+package com.chubbykeyboard.keyboard
 
 interface KeyboardConst {
     companion object {

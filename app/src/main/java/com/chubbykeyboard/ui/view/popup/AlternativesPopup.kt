@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -18,8 +17,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
-import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
-import com.chubbykeyboard.keyboard.keys.PrintedKey
+import com.chubbykeyboard.keyboard.KeyboardConst.Companion.NO_INPUT
 import com.chubbykeyboard.ui.view.popup.positioinprovider.TrackablePositionProvider
 import com.chubbykeyboard.util.ceilDiv
 
@@ -27,9 +25,9 @@ private const val POPUP_VERTICAL_OFFSET = -64
 
 @Composable
 fun AlternativesPopup(
-    keys: List<PrintedKey.Letter>,
-    dragGesturePosition: MutableState<Offset>,
-    buttonOffset: MutableState<Offset>,
+    keys: List<String>,
+    dragGesturePosition: Offset,
+    buttonOffset: Offset,
     onSelected: (String) -> Unit
 ) {
     val popupOffset = remember {
@@ -48,8 +46,8 @@ fun AlternativesPopup(
     ) {
         onSelected.invoke(NO_INPUT)
         val popupRelativeOffset = Offset(
-            buttonOffset.value.x - popupOffset.value.x,
-            buttonOffset.value.y - popupOffset.value.y
+            buttonOffset.x - popupOffset.value.x,
+            buttonOffset.y - popupOffset.value.y
         )
         Box {
             Column(
@@ -63,11 +61,11 @@ fun AlternativesPopup(
             ) {
                 keys.chunked((keys.size.ceilDiv(rowNumber))).forEach { row ->
                     Row {
-                        row.map { it.symbol }.forEach { letter ->
+                        row.forEach { letter ->
                             Box(modifier = Modifier.padding(4.dp)) {
                                 AlternativeLetter(
                                     letter,
-                                    dragGesturePosition.value,
+                                    dragGesturePosition,
                                     popupRelativeOffset
                                 ) {
                                     onSelected.invoke(letter)

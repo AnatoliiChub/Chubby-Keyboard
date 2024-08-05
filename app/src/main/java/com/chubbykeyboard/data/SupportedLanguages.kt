@@ -9,7 +9,7 @@ enum class SupportedLanguages(
     val lettersFile: String,
     val symbolsFile: String,
     val additionalSymbolsFile: String,
-    val numpadFile: String = "en/numpad.json"
+    val numpadFile: String
 ) {
     ENGLISH(
         "en",

@@ -13,22 +13,24 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Offset.Companion.Zero
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
+import com.chubbykeyboard.keyboard.KeyboardConst.Companion.NO_INPUT
 import com.chubbykeyboard.keyboard.keys.PrintedKey
 import com.chubbykeyboard.service.ChubbyIMEService
+import com.chubbykeyboard.ui.theme.ROUNDED_CORNERS_RADIUS
 import com.chubbykeyboard.ui.theme.RippleAlpha
 import com.chubbykeyboard.ui.view.popup.AlternativesPopup
 import com.chubbykeyboard.util.debounceCombinedClickable
@@ -48,11 +50,9 @@ fun PrintedKeyButton(
     val rootPosition = remember { mutableStateOf(Zero) }
     val selectedPromptLetter = remember { mutableStateOf(NO_INPUT) }
     val ctx = LocalContext.current
-    if (key is PrintedKey.Letter) {
-        key.setCapital(isShiftedParam)
-    }
+    if (key is PrintedKey.Letter) key.setCapital(isShiftedParam)
 
-    val shape = RoundedCornerShape(6.dp)
+    val shape = RoundedCornerShape(ROUNDED_CORNERS_RADIUS)
 
     Box(
         modifier = Modifier
@@ -83,12 +83,10 @@ fun PrintedKeyButton(
             fontSize = 24.sp,
             color = textColor
         )
-        if (pressed.value && longPressed.value && !key.alternatives.isNullOrEmpty()) {
-            val alternatives = key.alternatives.toCharArray().map { PrintedKey.Letter(it.toString(), "") }
-                .onEach { it.setCapital(isShiftedParam) }
-            AlternativesPopup(alternatives, dragGesturePosition, rootPosition) {
-                selectedPromptLetter.value = it
-            }
+        val shouldShowPopup = pressed.value && longPressed.value
+        //TODO Consider to use Popup for click and AlertDialog for long press
+        if (shouldShowPopup) {
+            Popup(key, isShiftedParam, dragGesturePosition.value, rootPosition.value, selectedPromptLetter)
         } else {
             if (longPressed.value && selectedPromptLetter.value != NO_INPUT) {
                 onPrintedKeyPressed(ctx, selectedPromptLetter.value, isShiftedParam)
@@ -98,6 +96,21 @@ fun PrintedKeyButton(
     }
 }
 
+@Composable
+private fun Popup(
+    key: PrintedKey,
+    isShiftedParam: Boolean,
+    dragGesturePosition: Offset,
+    rootPosition: Offset,
+    selectedPromptLetter: MutableState<String>
+) {
+    val alternatives = key.alternatives?.map {
+        if (isShiftedParam) it.uppercase() else it.toString()
+    }
+    AlternativesPopup(alternatives ?: listOf(key.symbol), dragGesturePosition, rootPosition) {
+        selectedPromptLetter.value = it
+    }
+}
 
 private fun onPrintedKeyPressed(
     ctx: Context,
