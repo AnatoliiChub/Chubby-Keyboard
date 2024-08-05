@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -19,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.chubbykeyboard.KeyboardConst.Companion.NO_INPUT
 import com.chubbykeyboard.keyboard.keys.PrintedKey
-import com.chubbykeyboard.ui.theme.AlternativeBackground
 import com.chubbykeyboard.ui.view.popup.positioinprovider.TrackablePositionProvider
 import com.chubbykeyboard.util.ceilDiv
 
@@ -56,7 +56,7 @@ fun AlternativesPopup(
                 modifier = Modifier
                     .wrapContentSize()
                     .background(
-                        color = AlternativeBackground,
+                        color = MaterialTheme.colorScheme.surface,
                         shape = RoundedCornerShape(12.dp)
                     ),
                 horizontalAlignment = Alignment.CenterHorizontally

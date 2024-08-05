@@ -1,6 +1,5 @@
 package com.chubbykeyboard.ui.view.keyboard
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,7 +24,6 @@ import com.chubbykeyboard.keyboard.keys.Functional.ToSymbols
 import com.chubbykeyboard.keyboard.keys.FunctionalKey
 import com.chubbykeyboard.keyboard.keys.PrintedKey
 import com.chubbykeyboard.service.ChubbyIMEService
-import com.chubbykeyboard.ui.theme.BackgroundColor
 import com.chubbykeyboard.ui.view.key.PrintedKeyButton
 import com.chubbykeyboard.ui.view.key.functional.BackSpaceButton
 import com.chubbykeyboard.ui.view.key.functional.CapsLockButton
@@ -45,13 +43,11 @@ fun Keyboard(
     val matrix = state.keyMatrix.matrix
 
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(BackgroundColor)
+        modifier = Modifier.fillMaxWidth()
     ) {
         Column(
             modifier = Modifier
-                .padding(top = 4.dp)
+                .padding(top = 4.dp, bottom = 4.dp)
                 .fillMaxWidth()
         ) {
             matrix.forEach { row ->
@@ -99,7 +95,13 @@ private fun RowScope.FunctionalKeyLayout(
 
     Box(
         modifier = Modifier.Companion
-            .weight(if (key.function == Space) 2.5f else 1.5f)
+            .weight(
+                when (key.function) {
+                    Space -> 2.5f
+                    ToSymbols, ToLetters, ToAdditionalSymbols, Enter -> 1.5f
+                    else -> 1f
+                }
+            )
             .padding(2.dp)
     ) {
         when (key.function) {

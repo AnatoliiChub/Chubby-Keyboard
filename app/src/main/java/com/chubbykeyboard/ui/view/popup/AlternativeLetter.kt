@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -17,7 +18,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.chubbykeyboard.ui.theme.AlternativeLetterKeyBrush
+import com.chubbykeyboard.ui.theme.SurfaceColor
 
 @Composable
 fun AlternativeLetter(
@@ -36,7 +37,7 @@ fun AlternativeLetter(
     Box(
         modifier = Modifier
             .background(
-                brush = AlternativeLetterKeyBrush.invoke(selected),
+                color = SurfaceColor.invoke(selected),
                 shape = CircleShape
             )
             .onGloballyPositioned {
@@ -61,7 +62,8 @@ fun AlternativeLetter(
                 .size(32.dp),
             textAlign = TextAlign.Center,
             text = letter,
-            fontSize = 22.sp
+            fontSize = 22.sp,
+            color = MaterialTheme.colorScheme.onSurface
         )
     }
 }

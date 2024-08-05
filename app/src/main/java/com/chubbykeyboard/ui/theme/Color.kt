@@ -2,43 +2,28 @@ package com.chubbykeyboard.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+object Light {
+    val OnPrimary = Color(0xFF000000)
+    val OnSecondary = Color(0xFF000000)
+    val OnTertiary = Color(0xFF000000)
+    val OnSurface = Color(0xFF000000)
+    val Primary = Color.White
+    val Secondary = Color(0xFFD0E4FF)
+    val Tertiary = Color(0xFFA0C0F7)
+    val Surface = Color(0xFFD7E5F8)
+    val SurfaceVariant = Color(0xFFB0D0FF)
+    val BackgroundColor = Color(0xFFEEEEEE)
+}
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
-
-
-// TODO: imnplement dark and light themes
-// Printed Key Gradient
-val PrintedKeyGradientStart = Color.White // White
-val PrintedKeyGradientEnd = Color.White // White
-
-// Pressed Printed Key Gradient
-val PressedPrintedKeyGradientStart = Color(0xFFCBD3E7) // Light Grey (Darker)
-val PressedPrintedKeyGradientEnd = Color(0xFFB8CAD8)   // Light Grey (Even Darker)
-
-// Functional Key Gradient
-val FunctionalKeyGradientStart = Color(0xFFD0E4FF) // Light Purple
-val FunctionalKeyGradientEnd = Color(0xFFC4D4EE) // Light Purple
-
-// Pressed Functional Key Gradient
-val PressedFunctionalKeyGradientStart = Color(0xFFC0D0FF) // Purple
-val PressedFunctionalKeyGradientEnd = Color(0xFFA0C0EE) //  Purple
-
-// Main Key Gradient
-val MainKeyGradientStart = Color(0xFFA0C0F7) // Dark Purple
-val MainKeyGradientEnd =  Color(0xFF7D9EF0)  // Grey 600
-
-// Pressed Main Key Gradient
-val PressedMainKeyGradientStart = Color(0xFF6BA0FC) // Dark Purple
-val PressedMainKeyGradientEnd =  Color(0xFF5976CE)  // Grey 600
-
-val AlternativeBackground = Color(0xFFD7E5F8) // Light Purple
-val AlternativePressedKeyGradientStart = Color(0xFFB0D0FF) // Purple
-val AlternativeKeyGradientEnd = Color(0xFF9AC0EE) //  Purple
-
-// Background Color
-val BackgroundColor = Color(0xFFEEEEEE) // Light Grey
+object Dark {
+    val OnPrimary = Color(0xFFEEEEEE)
+    val OnSecondary = Color(0xFFEEEEEE)
+    val OnTertiary = Color(0xFF222222)
+    val OnSurface = Color(0xFFEEEEEE)
+    val Primary = Color(0xFF222222)
+    val Secondary = Color(0xFF393939)
+    val Tertiary = Color(0xFFC2D6F7)
+    val Surface = Color(0xFF4B5668)
+    val SurfaceVariant = Color(0xFF2B3749)
+    val BackgroundColor = Color(0xFF000000)
+}

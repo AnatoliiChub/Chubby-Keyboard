@@ -1,10 +1,10 @@
 package com.chubbykeyboard.ui.view.key.functional
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.keyboard.keys.FunctionalKey
-import com.chubbykeyboard.ui.theme.EnterKeyBrush
 
 @Composable
 fun EnterButton(
@@ -16,6 +16,7 @@ fun EnterButton(
         fontSize = 36.sp,
         fontWeight = Bold,
         onClick = onPress,
-        backgroundBrushProvider = EnterKeyBrush,
+        backgroundColor = MaterialTheme.colorScheme.tertiary,
+        textColor = MaterialTheme.colorScheme.onTertiary
     )
 }

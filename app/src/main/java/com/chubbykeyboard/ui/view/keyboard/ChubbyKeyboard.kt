@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,9 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.data.parser.KeyMatrix
 import com.chubbykeyboard.keyboard.KeyBoardState
-import com.chubbykeyboard.ui.theme.BackgroundColor
 import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
-
 
 @Composable
 fun ChubbyKeyboard(
@@ -27,7 +26,7 @@ fun ChubbyKeyboard(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(228.dp)
-                .background(BackgroundColor),
+                .background(MaterialTheme.colorScheme.background),
             contentAlignment = Alignment.Center
         ) {
             when (val content = state.value) {

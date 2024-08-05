@@ -8,21 +8,32 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80,
-    background = Color.Transparent
+    primary = Dark.Primary,
+    onPrimary = Dark.OnPrimary,
+    secondary = Dark.Secondary,
+    onSecondary = Dark.OnSecondary,
+    tertiary = Dark.Tertiary,
+    onTertiary = Dark.OnTertiary,
+    background = Dark.BackgroundColor,
+    surface = Dark.Surface,
+    onSurface = Dark.OnSurface,
+    surfaceVariant = Dark.SurfaceVariant,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40,
-    background = Color.Transparent
+    primary = Light.Primary,
+    onPrimary = Light.OnPrimary,
+    secondary = Light.Secondary,
+    onSecondary = Light.OnSecondary,
+    tertiary = Light.Tertiary,
+    onTertiary = Light.OnTertiary,
+    background = Light.BackgroundColor,
+    surface = Light.Surface,
+    onSurface = Light.OnSurface,
+    surfaceVariant = Light.SurfaceVariant,
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -39,8 +50,7 @@ private val LightColorScheme = lightColorScheme(
 fun ChubbyKeyboardTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    dynamicColor: Boolean = false, content: @Composable () -> Unit
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -53,8 +63,6 @@ fun ChubbyKeyboardTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        colorScheme = colorScheme, typography = Typography, content = content
     )
 }

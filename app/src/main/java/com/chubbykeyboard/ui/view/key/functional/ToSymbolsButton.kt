@@ -1,15 +1,21 @@
 package com.chubbykeyboard.ui.view.key.functional
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import com.chubbykeyboard.keyboard.keys.FunctionalKey
 
 @Composable
 fun ToSymbolsButton(
     key: FunctionalKey,
+    backgroundColor: Color = MaterialTheme.colorScheme.secondary,
+    textColor: Color = MaterialTheme.colorScheme.onSecondary,
     onPress: () -> Unit
 ) {
     BaseFunctionalButton(
         key = key,
         onClick = onPress,
+        backgroundColor = backgroundColor,
+        textColor = textColor
     )
 }
