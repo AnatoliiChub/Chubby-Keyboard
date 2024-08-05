@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.chubbykeyboard.ChubbyIMEService
+import com.chubbykeyboard.service.ChubbyIMEService
 import com.chubbykeyboard.data.parser.KeyMatrix
 import com.chubbykeyboard.keyboard.keys.Functional.Backspace
 import com.chubbykeyboard.keyboard.keys.Functional.Enter

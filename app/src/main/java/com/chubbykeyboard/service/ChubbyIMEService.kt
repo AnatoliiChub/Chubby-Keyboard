@@ -1,4 +1,4 @@
-package com.chubbykeyboard
+package com.chubbykeyboard.service
 
 import android.inputmethodservice.InputMethodService
 import android.view.View

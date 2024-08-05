@@ -22,7 +22,11 @@ object ServiceModule {
         getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase
     ) = viewModelFactory {
         initializer {
-            ChubbyKeyboardViewModel(provideKeyMatrixUseCase, switchLanguageUseCase, getCurrentSupportedLocaleUseCase)
+            ChubbyKeyboardViewModel(
+                provideKeyMatrixUseCase,
+                switchLanguageUseCase,
+                getCurrentSupportedLocaleUseCase
+            )
         }
     }
 }

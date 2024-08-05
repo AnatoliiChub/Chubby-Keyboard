@@ -12,10 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.chubbykeyboard.ChubbyIMEService
 import com.chubbykeyboard.keyboard.KeyBoardState
-import com.chubbykeyboard.keyboard.keys.Functional
 import com.chubbykeyboard.keyboard.keys.Functional.Backspace
+import com.chubbykeyboard.keyboard.keys.Functional.CapsLock
 import com.chubbykeyboard.keyboard.keys.Functional.Enter
 import com.chubbykeyboard.keyboard.keys.Functional.Space
 import com.chubbykeyboard.keyboard.keys.Functional.SwitchLanguage
@@ -24,8 +23,8 @@ import com.chubbykeyboard.keyboard.keys.Functional.ToLetters
 import com.chubbykeyboard.keyboard.keys.Functional.ToNumPad
 import com.chubbykeyboard.keyboard.keys.Functional.ToSymbols
 import com.chubbykeyboard.keyboard.keys.FunctionalKey
-import com.chubbykeyboard.keyboard.keys.FunctionalKey.CapsLock
 import com.chubbykeyboard.keyboard.keys.PrintedKey
+import com.chubbykeyboard.service.ChubbyIMEService
 import com.chubbykeyboard.ui.theme.BackgroundColor
 import com.chubbykeyboard.ui.view.key.PrintedKeyButton
 import com.chubbykeyboard.ui.view.key.functional.BackSpaceButton
@@ -43,8 +42,8 @@ fun Keyboard(
     state: KeyBoardState.Content, router: FunctionalRouter
 ) {
     val isCapsLock = state.isCapsLockActive
-    //TODO probably need to move to data layer
-    val service = (LocalContext.current as ChubbyIMEService)
+    val matrix = state.keyMatrix.matrix
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -55,7 +54,7 @@ fun Keyboard(
                 .padding(top = 4.dp)
                 .fillMaxWidth()
         ) {
-            state.keyMatrix.matrix.forEach { row ->
+            matrix.forEach { row ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -64,7 +63,7 @@ fun Keyboard(
                     row.forEach { key ->
                         when (key) {
                             is PrintedKey -> PrintedKeyLayout(key, isCapsLock)
-                            is FunctionalKey -> FunctionalKeyLayout(key, service, router, isCapsLock)
+                            is FunctionalKey -> FunctionalKeyLayout(key, router, isCapsLock)
                         }
                     }
                 }
@@ -89,28 +88,30 @@ private fun RowScope.PrintedKeyLayout(key: PrintedKey, isCapsLock: Boolean) {
 @Composable
 private fun RowScope.FunctionalKeyLayout(
     key: FunctionalKey,
-    service: ChubbyIMEService,
     router: FunctionalRouter,
     isCapsLock: Boolean,
 ) {
+    val service = LocalContext.current as ChubbyIMEService
+
+    val onSpacePressed = { service.sendKeyChar(' ') }
+    val onEnterPressed = { service.sendKeyChar('\n') }
+    val onBackspacePressed = { service.currentInputConnection.deleteSurroundingText(1, 0) }
+
     Box(
         modifier = Modifier.Companion
             .weight(if (key.function == Space) 2.5f else 1.5f)
             .padding(2.dp)
     ) {
         when (key.function) {
-            Backspace -> BackSpaceButton(key) {
-                service.currentInputConnection.deleteSurroundingText(1, 0)
-            }
-
-            Enter -> EnterButton(key) { service.sendKeyChar('\n') }
+            Backspace -> BackSpaceButton(key) { onBackspacePressed() }
+            Enter -> EnterButton(key) { onEnterPressed() }
             SwitchLanguage -> SwitchLanguageButton(key) { router.onSwitchLangPressed() }
-            Space -> SpaceButton(key) { service.sendKeyChar(' ') }
+            Space -> SpaceButton(key) { onSpacePressed() }
             ToSymbols -> ToSymbolsButton(key) { router.onToSymbolsPressed() }
             ToLetters -> ToLettersButton(key) { router.onToLettersPressed() }
             ToAdditionalSymbols -> ToAdditionalSymbolsButton(key) { router.onToAdditionalSymbolsPressed() }
             ToNumPad -> ToNumPadButton(key) { router.onToNumPadPressed() }
-            Functional.CapsLock -> CapsLockButton(key as CapsLock, isCapsLock) { router.onCapsLockPressed() }
+            CapsLock -> CapsLockButton(key as FunctionalKey.CapsLock, isCapsLock) { router.onCapsLockPressed() }
         }
     }
 }
