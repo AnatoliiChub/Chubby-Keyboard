@@ -40,6 +40,7 @@ import java.util.Locale
 fun PrintedKeyButton(
     key: PrintedKey,
     isShiftedParam: Boolean,
+    debounceInterval: Long,
     backgroundColor: Color = MaterialTheme.colorScheme.primary,
     textColor: Color = MaterialTheme.colorScheme.onPrimary
 ) {
@@ -62,6 +63,7 @@ fun PrintedKeyButton(
             .debounceCombinedClickable(
                 interactionSource = interactionSource,
                 indication = rememberRipple(true, color = textColor.copy(alpha = RippleAlpha)),
+                debounceInterval = debounceInterval,
                 onLongClick = { longPressed.value = true },
                 onClick = { onPrintedKeyPressed(ctx, key.symbol, isShiftedParam) })
             .pointerInput(Unit) {

@@ -41,7 +41,7 @@ fun ChubbyKeyboard(
                     KeyBoardState.Loading -> CircularProgressIndicator(modifier = Modifier.size(PROGRESS_BAR_SIZE))
                     is KeyBoardState.Content -> {
                         if (content.keyMatrix is KeyMatrix.NumPadMatrix) {
-                            Numpad(content.keyMatrix, viewModel.router)
+                            Numpad(content, viewModel.router)
                         } else {
                             Keyboard(content, viewModel.router)
                         }

@@ -8,6 +8,7 @@ sealed class KeyBoardState {
 
     data class Content(
         val isCapsLockActive: Boolean,
-        val keyMatrix: KeyMatrix
+        val keyMatrix: KeyMatrix,
+        val debounce : Long
     ) : KeyBoardState()
 }

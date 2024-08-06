@@ -6,10 +6,12 @@ import com.chubbykeyboard.keyboard.keys.FunctionalKey
 @Composable
 fun ToLettersButton(
     key: FunctionalKey,
-    onPress: () -> Unit
+    debounceInterval: Long,
+    onPress: () -> Unit,
 ) {
     BaseFunctionalButton(
         key = key,
+        debounceInterval = debounceInterval,
         onClick = onPress,
     )
 }

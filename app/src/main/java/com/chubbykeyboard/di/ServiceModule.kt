@@ -2,6 +2,7 @@ package com.chubbykeyboard.di
 
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.chubbykeyboard.data.repo.SettingsRepository
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
 import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
 import com.chubbykeyboard.domain.SwitchLanguageUseCase
@@ -19,13 +20,15 @@ object ServiceModule {
     fun provideChubbyKeyboardViewModelFactory(
         provideKeyMatrixUseCase: ProvideKeyMatrixUseCase,
         switchLanguageUseCase: SwitchLanguageUseCase,
-        getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase
+        getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase,
+        settingsRepository: SettingsRepository
     ) = viewModelFactory {
         initializer {
             ChubbyKeyboardViewModel(
                 provideKeyMatrixUseCase,
                 switchLanguageUseCase,
-                getCurrentSupportedLocaleUseCase
+                getCurrentSupportedLocaleUseCase,
+                settingsRepository
             )
         }
     }

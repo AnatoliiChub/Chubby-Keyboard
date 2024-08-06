@@ -32,6 +32,7 @@ fun BaseFunctionalButton(
     maxLines: Int = 1,
     fontWeight: FontWeight = Normal,
     onClick: () -> Unit,
+    debounceInterval: Long,
     backgroundColor: Color = MaterialTheme.colorScheme.secondary,
     textColor: Color = MaterialTheme.colorScheme.onSecondary
 ) {
@@ -46,6 +47,7 @@ fun BaseFunctionalButton(
             .debounceClickable(
                 interactionSource = interactionSource,
                 indication = rememberRipple(true, color = textColor.copy(alpha = RippleAlpha)),
+                debounceInterval = debounceInterval,
                 onClick = onClick
             )
             .background(

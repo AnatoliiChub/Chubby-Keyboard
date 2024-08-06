@@ -6,10 +6,12 @@ import com.chubbykeyboard.keyboard.keys.FunctionalKey
 @Composable
 fun ToAdditionalSymbolsButton(
     key: FunctionalKey,
+    debounceInterval: Long,
     onPress: () -> Unit,
 ) {
     BaseFunctionalButton(
         key = key,
+        debounceInterval = debounceInterval,
         onClick = onPress,
     )
 }

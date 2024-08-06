@@ -8,13 +8,15 @@ import com.chubbykeyboard.keyboard.keys.FunctionalKey
 @Composable
 fun ToNumPadButton(
     key: FunctionalKey,
+    debounceInterval: Long,
     onPress: () -> Unit,
 ) {
     BaseFunctionalButton(
         key = key,
-        onClick = onPress,
         fontSize = 16.sp,
         fontWeight = FontWeight.Bold,
-        maxLines = 2
+        maxLines = 2,
+        debounceInterval = debounceInterval,
+        onClick = onPress,
     )
 }

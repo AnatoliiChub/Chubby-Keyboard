@@ -7,11 +7,13 @@ import com.chubbykeyboard.keyboard.keys.FunctionalKey
 @Composable
 fun SpaceButton(
     key: FunctionalKey,
-    onPress: () -> Unit
+    debounceInterval: Long,
+    onPress: () -> Unit,
 ) {
     BaseFunctionalButton(
         key = key,
         fontSize = 14.sp,
+        debounceInterval = debounceInterval,
         onClick = onPress,
     )
 }

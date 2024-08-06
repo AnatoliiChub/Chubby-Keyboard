@@ -8,13 +8,15 @@ import com.chubbykeyboard.keyboard.keys.FunctionalKey
 @Composable
 fun BackSpaceButton(
     key: FunctionalKey,
-    onPress: () -> Unit
+    debounceInterval: Long,
+    onPress: () -> Unit,
 ) {
     BaseFunctionalButton(
         key = key,
         fontSize = 24.sp,
         fontWeight = Bold,
-        onClick = onPress,
+        debounceInterval = debounceInterval,
+        onClick = onPress
     )
 }
 

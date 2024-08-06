@@ -9,6 +9,7 @@ import com.chubbykeyboard.keyboard.keys.FunctionalKey
 fun CapsLockButton(
     key: FunctionalKey.CapsLock,
     isShiftedParam: Boolean,
+    debounceInterval: Long,
     onPress: () -> Unit,
 ) {
     key.updateShift(isShiftedParam)
@@ -17,6 +18,7 @@ fun CapsLockButton(
         key = key,
         fontSize = 28.sp,
         fontWeight = Bold,
+        debounceInterval = debounceInterval,
         onClick = onPress,
     )
 }

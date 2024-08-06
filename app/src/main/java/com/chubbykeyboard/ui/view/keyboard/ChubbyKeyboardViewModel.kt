@@ -2,6 +2,7 @@ package com.chubbykeyboard.ui.view.keyboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.chubbykeyboard.data.repo.SettingsRepository
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
 import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
 import com.chubbykeyboard.domain.SwitchLanguageUseCase
@@ -22,7 +23,8 @@ import java.util.Locale
 class ChubbyKeyboardViewModel(
     private val provideKeyMatrixUseCase: ProvideKeyMatrixUseCase,
     private val switchLanguageUseCase: SwitchLanguageUseCase,
-    private val getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase
+    private val getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase,
+    private val settingsRepo: SettingsRepository
 ) : ViewModel() {
 
     private val workDispatcher = Dispatchers.Default
@@ -46,7 +48,8 @@ class ChubbyKeyboardViewModel(
     val uiState: StateFlow<KeyBoardState> = _uiState
         .map {
             val keyMatrix = provideKeyMatrixUseCase.provide(it.currentLocale, it.keyboardType)
-            KeyBoardState.Content(it.isCapsLockActive, keyMatrix)
+            val debounce = settingsRepo.getDebounce()
+            KeyBoardState.Content(it.isCapsLockActive, keyMatrix, debounce)
         }.flowOn(workDispatcher)
         .stateIn(
             viewModelScope,

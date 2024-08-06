@@ -42,6 +42,7 @@ fun Keyboard(
 ) {
     val isCapsLock = state.isCapsLockActive
     val matrix = state.keyMatrix.matrix
+    val debounce = state.debounce
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -54,8 +55,8 @@ fun Keyboard(
             ) {
                 row.forEach { key ->
                     when (key) {
-                        is PrintedKey -> PrintedKeyWrapper(key, isCapsLock)
-                        is FunctionalKey -> FunctionalKeyWrapper(key, router, isCapsLock)
+                        is PrintedKey -> PrintedKeyWrapper(key, isCapsLock, debounce)
+                        is FunctionalKey -> FunctionalKeyWrapper(key, router, isCapsLock, debounce)
                     }
                 }
             }
@@ -64,14 +65,14 @@ fun Keyboard(
 }
 
 @Composable
-private fun RowScope.PrintedKeyWrapper(key: PrintedKey, isCapsLock: Boolean) {
+private fun RowScope.PrintedKeyWrapper(key: PrintedKey, isCapsLock: Boolean, debounce: Long) {
     Box(
         modifier = Modifier.Companion
             .weight(1f)
             .padding(BUTTON_PADDING)
     ) {
         PrintedKeyButton(
-            key, isCapsLock
+            key, isCapsLock, debounce
         )
     }
 }
@@ -81,6 +82,7 @@ private fun RowScope.FunctionalKeyWrapper(
     key: FunctionalKey,
     router: FunctionalRouter,
     isCapsLock: Boolean,
+    debounce: Long
 ) {
     val service = LocalContext.current as ChubbyIMEService
 
@@ -100,15 +102,19 @@ private fun RowScope.FunctionalKeyWrapper(
             .padding(BUTTON_PADDING)
     ) {
         when (key.function) {
-            Backspace -> BackSpaceButton(key) { onBackspacePressed() }
-            Enter -> EnterButton(key) { onEnterPressed() }
-            SwitchLanguage -> SwitchLanguageButton(key) { router.onSwitchLangPressed() }
-            Space -> SpaceButton(key) { onSpacePressed() }
-            ToSymbols -> ToSymbolsButton(key) { router.onToSymbolsPressed() }
-            ToLetters -> ToLettersButton(key) { router.onToLettersPressed() }
-            ToAdditionalSymbols -> ToAdditionalSymbolsButton(key) { router.onToAdditionalSymbolsPressed() }
-            ToNumPad -> ToNumPadButton(key) { router.onToNumPadPressed() }
-            CapsLock -> CapsLockButton(key as FunctionalKey.CapsLock, isCapsLock) { router.onCapsLockPressed() }
+            Backspace -> BackSpaceButton(key, debounce) { onBackspacePressed() }
+            Space -> SpaceButton(key, debounce) { onSpacePressed() }
+            Enter -> EnterButton(key, debounce) { onEnterPressed() }
+            ToSymbols -> ToSymbolsButton(key, debounce) { router.onToSymbolsPressed() }
+            ToLetters -> ToLettersButton(key, debounce) { router.onToLettersPressed() }
+            ToAdditionalSymbols -> ToAdditionalSymbolsButton(key, debounce) { router.onToAdditionalSymbolsPressed() }
+            ToNumPad -> ToNumPadButton(key, debounce) { router.onToNumPadPressed() }
+            CapsLock -> CapsLockButton(key as FunctionalKey.CapsLock, isCapsLock, debounce) {
+                router.onCapsLockPressed()
+            }
+
+            SwitchLanguage -> SwitchLanguageButton(key, debounce) { router.onSwitchLangPressed() }
+            else -> throw IllegalStateException("Unsupported key for keyboard: $key")
         }
     }
 }

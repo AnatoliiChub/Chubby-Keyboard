@@ -8,14 +8,16 @@ import com.chubbykeyboard.keyboard.keys.FunctionalKey
 @Composable
 fun ToSymbolsButton(
     key: FunctionalKey,
+    debounceInterval: Long,
     backgroundColor: Color = MaterialTheme.colorScheme.secondary,
     textColor: Color = MaterialTheme.colorScheme.onSecondary,
     onPress: () -> Unit
 ) {
     BaseFunctionalButton(
         key = key,
-        onClick = onPress,
         backgroundColor = backgroundColor,
-        textColor = textColor
+        textColor = textColor,
+        debounceInterval = debounceInterval,
+        onClick = onPress
     )
 }

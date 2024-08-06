@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.text.isDigitsOnly
 import com.chubbykeyboard.data.parser.KeyMatrix
+import com.chubbykeyboard.keyboard.KeyBoardState
 import com.chubbykeyboard.keyboard.keys.Functional.Backspace
 import com.chubbykeyboard.keyboard.keys.Functional.Enter
 import com.chubbykeyboard.keyboard.keys.Functional.Space
@@ -40,8 +41,10 @@ import com.chubbykeyboard.ui.view.key.functional.ToSymbolsButton
 
 @Composable
 fun Numpad(
-    state: KeyMatrix.NumPadMatrix, router: FunctionalRouter
+    state: KeyBoardState.Content, router: FunctionalRouter
 ) {
+    val keyMatrix = state.keyMatrix as KeyMatrix.NumPadMatrix
+    val debounce = state.debounce
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -55,15 +58,15 @@ fun Numpad(
                 .fillMaxWidth()
         ) {
             val shape = RoundedCornerShape(ROUNDED_CORNERS_RADIUS)
-            AdditionalOptionsPanel(shape, state)
-            AdditionalButton(state.additionalButton, router.onToLettersPressed)
+            AdditionalOptionsPanel(shape, keyMatrix, debounce)
+            AdditionalButton(keyMatrix.additionalButton, debounce, router.onToLettersPressed)
         }
         Column(
             modifier = Modifier
                 .weight(mainColumnWeight)
                 .fillMaxWidth()
         ) {
-            state.matrix.forEach { row ->
+            keyMatrix.matrix.forEach { row ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -71,8 +74,8 @@ fun Numpad(
                 ) {
                     row.forEach { key ->
                         when (key) {
-                            is PrintedKey -> PrintedKeyWrapper(key)
-                            is FunctionalKey -> FunctionalKeyWrapper(key, router)
+                            is PrintedKey -> PrintedKeyWrapper(key, debounce)
+                            is FunctionalKey -> FunctionalKeyWrapper(key, debounce, router)
                         }
                     }
                 }
@@ -84,7 +87,8 @@ fun Numpad(
 @Composable
 private fun AdditionalOptionsPanel(
     shape: RoundedCornerShape,
-    state: KeyMatrix.NumPadMatrix
+    state: KeyMatrix.NumPadMatrix,
+    debounce: Long
 ) {
     LazyColumn(
         modifier = Modifier
@@ -101,8 +105,9 @@ private fun AdditionalOptionsPanel(
                     PrintedKeyButton(
                         key,
                         false,
+                        debounce,
                         MaterialTheme.colorScheme.secondary,
-                        MaterialTheme.colorScheme.onSecondary
+                        MaterialTheme.colorScheme.onSecondary,
                     )
                 }
             }
@@ -113,6 +118,7 @@ private fun AdditionalOptionsPanel(
 @Composable
 private fun AdditionalButton(
     functionalKey: FunctionalKey,
+    debounce: Long,
     onToLettersPressed: () -> Unit
 ) {
     functionalKey.let { key ->
@@ -122,7 +128,7 @@ private fun AdditionalButton(
                     .height(BUTTON_HEIGHT)
                     .padding(BUTTON_PADDING)
             ) {
-                ToLettersButton(key) { onToLettersPressed() }
+                ToLettersButton(key, debounce) { onToLettersPressed() }
             }
         } else {
             throw IllegalStateException("Unsupported key for numpad: $key")
@@ -133,6 +139,7 @@ private fun AdditionalButton(
 @Composable
 private fun RowScope.FunctionalKeyWrapper(
     key: FunctionalKey,
+    debounce: Long,
     router: FunctionalRouter
 ) {
     val service = (LocalContext.current as ChubbyIMEService)
@@ -142,21 +149,21 @@ private fun RowScope.FunctionalKeyWrapper(
             .padding(BUTTON_PADDING)
     ) {
         when (key.function) {
-            Backspace -> BackSpaceButton(key) {
+            Backspace -> BackSpaceButton(key, debounce) {
                 service.currentInputConnection.deleteSurroundingText(1, 0)
             }
 
-            Enter -> EnterButton(key) { service.sendKeyChar('\n') }
-            Space -> SpaceButton(key) { service.sendKeyChar(' ') }
-            ToSymbols -> ToSymbolsButton(key) { router.onToSymbolsPressed() }
-            ToLetters -> ToLettersButton(key) { router.onToLettersPressed() }
+            Enter -> EnterButton(key, debounce) { service.sendKeyChar('\n') }
+            Space -> SpaceButton(key, debounce) { service.sendKeyChar(' ') }
+            ToSymbols -> ToSymbolsButton(key, debounce) { router.onToSymbolsPressed() }
+            ToLetters -> ToLettersButton(key, debounce) { router.onToLettersPressed() }
             else -> throw IllegalStateException("Unsupported key for numpad: $key")
         }
     }
 }
 
 @Composable
-private fun RowScope.PrintedKeyWrapper(key: PrintedKey) {
+private fun RowScope.PrintedKeyWrapper(key: PrintedKey, debounce: Long) {
     Box(
         modifier = Modifier.Companion
             .weight(if (key.symbol == "," || key.symbol == "." || key.symbol == "=") 0.5f else 1f)
@@ -169,6 +176,7 @@ private fun RowScope.PrintedKeyWrapper(key: PrintedKey) {
         PrintedKeyButton(
             key,
             false,
+            debounce,
             backgroundColor = backgroundColor
         )
     }

@@ -9,14 +9,16 @@ import com.chubbykeyboard.keyboard.keys.FunctionalKey
 @Composable
 fun EnterButton(
     key: FunctionalKey,
-    onPress: () -> Unit
+    debounceInterval: Long,
+    onPress: () -> Unit,
 ) {
     BaseFunctionalButton(
         key = key,
         fontSize = 36.sp,
         fontWeight = Bold,
-        onClick = onPress,
+        debounceInterval = debounceInterval,
         backgroundColor = MaterialTheme.colorScheme.tertiary,
-        textColor = MaterialTheme.colorScheme.onTertiary
+        textColor = MaterialTheme.colorScheme.onTertiary,
+        onClick = onPress,
     )
 }
