@@ -112,9 +112,7 @@ private fun RowScope.FunctionalKeyWrapper(
             CapsLock -> CapsLockButton(key as FunctionalKey.CapsLock, isCapsLock, debounce) {
                 router.onCapsLockPressed()
             }
-
             SwitchLanguage -> SwitchLanguageButton(key, debounce) { router.onSwitchLangPressed() }
-            else -> throw IllegalStateException("Unsupported key for keyboard: $key")
         }
     }
 }

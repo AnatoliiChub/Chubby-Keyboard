@@ -45,7 +45,7 @@ fun RangedSetting(
                 Spacer(modifier = Modifier.weight(1f))
                 Switch(checked = isEnabled.value, onCheckedChange = {
                     isEnabled.value = it
-                    onChanged(if (it) updatedValue.value else 0f)
+                    onChanged(if (it) updatedValue.floatValue else 0f)
                 })
 
             }
