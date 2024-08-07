@@ -4,7 +4,7 @@ import androidx.collection.LruCache
 import com.chubbykeyboard.data.SupportedLanguages
 import com.chubbykeyboard.data.parser.JsonKeyMatrixParser
 import com.chubbykeyboard.data.parser.KeyMatrix
-import com.chubbykeyboard.keyboard.KeyboardType
+import com.chubbykeyboard.domain.keyboard.KeyboardType
 import java.util.Locale
 import javax.inject.Inject
 

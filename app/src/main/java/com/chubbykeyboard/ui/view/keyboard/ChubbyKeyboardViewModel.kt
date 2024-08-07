@@ -2,13 +2,13 @@ package com.chubbykeyboard.ui.view.keyboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.chubbykeyboard.data.repo.SettingsRepository
+import com.chubbykeyboard.data.repo.AccessibilitySettingsRepositoryImpl
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
 import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
 import com.chubbykeyboard.domain.SwitchLanguageUseCase
-import com.chubbykeyboard.keyboard.KeyBoardParameters
-import com.chubbykeyboard.keyboard.KeyBoardState
-import com.chubbykeyboard.keyboard.KeyboardType
+import com.chubbykeyboard.domain.keyboard.KeyBoardParameters
+import com.chubbykeyboard.domain.keyboard.KeyBoardState
+import com.chubbykeyboard.domain.keyboard.KeyboardType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,16 +24,22 @@ class ChubbyKeyboardViewModel(
     private val provideKeyMatrixUseCase: ProvideKeyMatrixUseCase,
     private val switchLanguageUseCase: SwitchLanguageUseCase,
     private val getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase,
-    private val settingsRepo: SettingsRepository
+    private val settingsRepo: AccessibilitySettingsRepositoryImpl
 ) : ViewModel() {
 
     private val workDispatcher = Dispatchers.Default
     private val isCapsLockActive = MutableStateFlow(false)
     private val currentLocale = MutableStateFlow(Locale.getDefault())
     private val keyboardType = MutableStateFlow(KeyboardType.LETTERS)
+
     private val _uiState =
-        combine(isCapsLockActive, currentLocale, keyboardType) { capsLock, locale, keyboardType ->
-            KeyBoardParameters(capsLock, locale, keyboardType)
+        combine(
+            isCapsLockActive,
+            currentLocale,
+            keyboardType,
+            settingsRepo.getDebounce()
+        ) { capsLock, locale, keyboardType, debounce ->
+            KeyBoardParameters(capsLock, locale, keyboardType, debounce)
         }
 
     val router: FunctionalRouter = FunctionalRouter(
@@ -48,8 +54,8 @@ class ChubbyKeyboardViewModel(
     val uiState: StateFlow<KeyBoardState> = _uiState
         .map {
             val keyMatrix = provideKeyMatrixUseCase.provide(it.currentLocale, it.keyboardType)
-            val debounce = settingsRepo.getDebounce()
-            KeyBoardState.Content(it.isCapsLockActive, keyMatrix, debounce)
+
+            KeyBoardState.Content(it.isCapsLockActive, keyMatrix, it.debounce)
         }.flowOn(workDispatcher)
         .stateIn(
             viewModelScope,

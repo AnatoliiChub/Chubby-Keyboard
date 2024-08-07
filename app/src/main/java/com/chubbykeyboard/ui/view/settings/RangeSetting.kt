@@ -20,7 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chubbykeyboard.R
-import com.chubbykeyboard.ui.screen.Settings
+import com.chubbykeyboard.domain.Settings
 
 @Composable
 fun RangedSetting(
@@ -61,8 +61,8 @@ fun RangedSetting(
                     modifier = Modifier.padding(horizontal = 8.dp),
                     value = updatedValue.floatValue,
                     onValueChange = { updatedValue.floatValue = it },
-                    valueRange = min.toFloat()..max.toFloat(),
-                    onValueChangeFinished = { onChanged(updatedValue.floatValue) }
+                    valueRange = range.first.toFloat()..range.last.toFloat(),
+                            onValueChangeFinished = { onChanged(updatedValue.floatValue) }
                 )
                 Text(
                     modifier = Modifier

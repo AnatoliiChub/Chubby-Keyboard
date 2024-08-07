@@ -1,4 +1,4 @@
-package com.chubbykeyboard.keyboard
+package com.chubbykeyboard.domain.keyboard
 
 import com.chubbykeyboard.data.parser.KeyMatrix
 

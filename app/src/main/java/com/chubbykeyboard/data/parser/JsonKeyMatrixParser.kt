@@ -1,9 +1,9 @@
 package com.chubbykeyboard.data.parser
 
 import android.content.Context
-import com.chubbykeyboard.keyboard.keys.FunctionalKey
-import com.chubbykeyboard.keyboard.keys.Key
-import com.chubbykeyboard.keyboard.keys.PrintedKey
+import com.chubbykeyboard.domain.keyboard.keys.FunctionalKey
+import com.chubbykeyboard.domain.keyboard.keys.Key
+import com.chubbykeyboard.domain.keyboard.keys.PrintedKey
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import dagger.hilt.android.qualifiers.ApplicationContext

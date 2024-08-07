@@ -1,8 +1,8 @@
 package com.chubbykeyboard.data.parser
 
-import com.chubbykeyboard.keyboard.keys.FunctionalKey
-import com.chubbykeyboard.keyboard.keys.Key
-import com.chubbykeyboard.keyboard.keys.PrintedKey
+import com.chubbykeyboard.domain.keyboard.keys.FunctionalKey
+import com.chubbykeyboard.domain.keyboard.keys.Key
+import com.chubbykeyboard.domain.keyboard.keys.PrintedKey
 import com.google.gson.Gson
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

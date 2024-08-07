@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chubbykeyboard.data.parser.KeyMatrix
-import com.chubbykeyboard.keyboard.KeyBoardState
+import com.chubbykeyboard.domain.keyboard.KeyBoardState
 import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
 import com.chubbykeyboard.ui.theme.KEYBOARD_HEIGHT
 import com.chubbykeyboard.ui.theme.KEYBOARD_VERTICAL_PADDING

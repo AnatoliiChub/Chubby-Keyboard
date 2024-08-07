@@ -3,7 +3,7 @@ package com.chubbykeyboard.ui.view.key.functional
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.chubbykeyboard.keyboard.keys.FunctionalKey
+import com.chubbykeyboard.domain.keyboard.keys.FunctionalKey
 
 @Composable
 fun ToSymbolsButton(

@@ -17,7 +17,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
-import com.chubbykeyboard.keyboard.KeyboardConst.Companion.NO_INPUT
+import com.chubbykeyboard.domain.keyboard.KeyboardConst.Companion.NO_INPUT
 import com.chubbykeyboard.ui.view.popup.positioinprovider.TrackablePositionProvider
 import com.chubbykeyboard.util.ceilDiv
 

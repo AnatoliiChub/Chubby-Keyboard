@@ -1,11 +1,10 @@
-package com.chubbykeyboard.ui.screen
+package com.chubbykeyboard.domain
 
 sealed class Settings(val title: String) {
     class RangedSettings(
         title: String,
         val description : String,
-        val min: Long,
-        val max: Long,
+        val range: LongRange,
         val value: Long
     ) : Settings(title)
 }

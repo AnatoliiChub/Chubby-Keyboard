@@ -1,4 +1,4 @@
-package com.chubbykeyboard.keyboard
+package com.chubbykeyboard.domain.keyboard
 
 import java.util.Locale
 
@@ -6,6 +6,7 @@ import java.util.Locale
 data class KeyBoardParameters(
     val isCapsLockActive: Boolean,
     val currentLocale: Locale,
-    val keyboardType: KeyboardType
+    val keyboardType: KeyboardType,
+    val debounce : Long
 )
 

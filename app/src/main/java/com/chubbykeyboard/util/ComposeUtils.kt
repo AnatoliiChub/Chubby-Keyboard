@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
-import com.chubbykeyboard.keyboard.KeyboardConst.Companion.DEBOUNCE
+import com.chubbykeyboard.domain.keyboard.KeyboardConst.Companion.DEBOUNCE
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

@@ -71,6 +71,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     //gson
     implementation(libs.gson)
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

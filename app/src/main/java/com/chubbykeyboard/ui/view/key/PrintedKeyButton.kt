@@ -27,8 +27,8 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.chubbykeyboard.keyboard.KeyboardConst.Companion.NO_INPUT
-import com.chubbykeyboard.keyboard.keys.PrintedKey
+import com.chubbykeyboard.domain.keyboard.KeyboardConst.Companion.NO_INPUT
+import com.chubbykeyboard.domain.keyboard.keys.PrintedKey
 import com.chubbykeyboard.service.ChubbyIMEService
 import com.chubbykeyboard.ui.theme.ROUNDED_CORNERS_RADIUS
 import com.chubbykeyboard.ui.theme.RippleAlpha

@@ -1,4 +1,4 @@
-package com.chubbykeyboard.keyboard
+package com.chubbykeyboard.domain.keyboard
 
 enum class KeyboardType {
     LETTERS,
