@@ -6,8 +6,8 @@ import com.chubbykeyboard.data.repo.AccessibilitySettingsRepositoryImpl
 import com.chubbykeyboard.domain.GetCurrentSupportedLocaleUseCase
 import com.chubbykeyboard.domain.ProvideKeyMatrixUseCase
 import com.chubbykeyboard.domain.SwitchLanguageUseCase
-import com.chubbykeyboard.service.ChubbyHapticManager
-import com.chubbykeyboard.service.HapticManager
+import com.chubbykeyboard.service.haptic.ChubbyHapticManager
+import com.chubbykeyboard.service.haptic.HapticManager
 import com.chubbykeyboard.ui.view.keyboard.ChubbyKeyboardViewModel
 import dagger.Module
 import dagger.Provides

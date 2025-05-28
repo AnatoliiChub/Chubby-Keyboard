@@ -9,7 +9,7 @@ import com.chubbykeyboard.domain.SwitchLanguageUseCase
 import com.chubbykeyboard.domain.keyboard.KeyBoardParameters
 import com.chubbykeyboard.domain.keyboard.KeyBoardState
 import com.chubbykeyboard.domain.keyboard.KeyboardType
-import com.chubbykeyboard.service.HapticManager
+import com.chubbykeyboard.service.haptic.HapticManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

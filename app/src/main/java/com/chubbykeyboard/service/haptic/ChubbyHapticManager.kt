@@ -1,4 +1,4 @@
-package com.chubbykeyboard.service
+package com.chubbykeyboard.service.haptic
 
 import android.content.Context
 import android.os.VibrationEffect
