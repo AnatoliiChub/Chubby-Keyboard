@@ -12,22 +12,26 @@ import javax.inject.Inject
 
 class JsonKeyMatrixParser @Inject constructor(
     @ApplicationContext val context: Context,
-    private val gson: Gson
+    private val gson: Gson,
 ) : KeyMatrixParser {
 
-    override fun parse(fileName: String): KeyMatrix{
+    override fun parse(fileName: String): KeyMatrix {
         val assetManager = context.assets
         val inputStream = assetManager.open(fileName)
         val reader = InputStreamReader(inputStream)
         val jsonElement = JsonParser.parseReader(reader)
         val isNumPad = jsonElement.asJsonObject.has("additionalOptions")
-        val clazz = if(isNumPad) KeyMatrix.NumPadMatrix::class.java else KeyMatrix::class.java
+        val clazz = if (isNumPad) KeyMatrix.NumPadMatrix::class.java else KeyMatrix::class.java
         return gson.fromJson(jsonElement, clazz)
     }
 }
 
 open class KeyMatrix(
-    val matrix: List<List<Key>>
+    val matrix: List<List<Key>>,
 ) {
-    class NumPadMatrix(matrix: List<List<Key>>, val additionalOptions: List<PrintedKey>, val additionalButton : FunctionalKey) : KeyMatrix(matrix)
+    class NumPadMatrix(
+        matrix: List<List<Key>>,
+        val additionalOptions: List<PrintedKey>,
+        val additionalButton: FunctionalKey,
+    ) : KeyMatrix(matrix)
 }

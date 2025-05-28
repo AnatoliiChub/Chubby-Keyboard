@@ -46,5 +46,4 @@ class BorderHandledPositionProvider(
 
         return alignmentOffset
     }
-
 }

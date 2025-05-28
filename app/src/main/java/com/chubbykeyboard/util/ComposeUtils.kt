@@ -1,6 +1,5 @@
 package com.chubbykeyboard.util
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
@@ -14,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import com.chubbykeyboard.domain.keyboard.KeyboardConst.Companion.DEBOUNCE
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Modifier.debounceCombinedClickable(
     interactionSource: MutableInteractionSource,

@@ -23,5 +23,4 @@ class SettingsViewModel @Inject constructor() : ViewModel() {
         SharingStarted.WhileSubscribed(stopTimeoutMillis = 500),
         SETTINGS_LIST
     )
-
 }

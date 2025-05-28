@@ -22,4 +22,3 @@ fun CapsLockButton(
         onClick = onPress,
     )
 }
-
