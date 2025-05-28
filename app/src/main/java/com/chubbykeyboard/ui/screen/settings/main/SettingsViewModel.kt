@@ -13,7 +13,8 @@ class SettingsViewModel @Inject constructor() : ViewModel() {
     companion object {
         private val SETTINGS_LIST = listOf(
             SettingsScreens.ACCESSIBILITY,
-            SettingsScreens.ABOUT
+            SettingsScreens.DEBUG,
+            SettingsScreens.ABOUT,
         )
     }
 

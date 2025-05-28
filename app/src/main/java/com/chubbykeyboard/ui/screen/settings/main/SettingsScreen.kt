@@ -20,7 +20,7 @@ import com.chubbykeyboard.ui.screen.settings.SettingsScreens
 fun SettingsScreen(
     innerPadding: PaddingValues,
     viewModel: SettingsViewModel = hiltViewModel(),
-    onAccessibilityClick: () -> Unit
+    onItemClick: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -29,16 +29,16 @@ fun SettingsScreen(
             .padding(16.dp)
     ) {
         viewModel.uiState.collectAsStateWithLifecycle().value.map {
-            when (it) {
+            val label = when (it) {
                 SettingsScreens.ACCESSIBILITY -> "Accessibility"
                 SettingsScreens.ABOUT -> "About"
+                SettingsScreens.DEBUG -> "Debug"
                 else -> throw IllegalArgumentException("Unknown screen")
             }
-        }.map {
             Box(modifier = Modifier
                 .fillMaxWidth()
-                .clickable { onAccessibilityClick() }) {
-                Text(text = it, modifier = Modifier.padding(16.dp), fontSize = 20.sp)
+                .clickable { onItemClick(it) }) {
+                Text(text = label, modifier = Modifier.padding(16.dp), fontSize = 20.sp)
             }
         }
     }

@@ -15,14 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChubbyKeyboard"
         tools:targetApi="31">
-        <activity android:name="com.TestActivity"
-            android:exported="true"
-            android:theme="@style/Theme.ChubbyKeyboard">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".ui.screen.settings.main.SettingsActivity"
             android:exported="true"
@@ -35,7 +27,6 @@
         <service
             android:name=".service.ChubbyIMEService"
             android:label="Chubby IME"
-
             android:permission="android.permission.BIND_INPUT_METHOD"
             android:exported="false">
             <intent-filter>

@@ -22,7 +22,9 @@ import androidx.navigation.compose.rememberNavController
 import com.chubbykeyboard.R
 import com.chubbykeyboard.ui.screen.settings.SettingsScreens
 import com.chubbykeyboard.ui.screen.settings.SettingsScreens.SETTINGS
+import com.chubbykeyboard.ui.screen.settings.about.AboutScreen
 import com.chubbykeyboard.ui.screen.settings.accessebility.AccessibilitySettingsScreen
+import com.chubbykeyboard.ui.screen.settings.debug.DebugScreen
 import com.chubbykeyboard.ui.theme.ChubbyKeyboardTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,16 +44,17 @@ class SettingsActivity : ComponentActivity() {
                     topBar = { AppBar { if (!navController.popBackStack()) finish() } }) { innerPadding ->
                     NavHost(startDestination = SETTINGS, navController = navController) {
                         composable(SETTINGS) {
-                            SettingsScreen(
-                                innerPadding = innerPadding
-                            ) { navController.navigate(SettingsScreens.ACCESSIBILITY) }
+                            SettingsScreen(innerPadding = innerPadding) { navController.navigate(it) }
                         }
                         composable(SettingsScreens.ACCESSIBILITY) {
-                            AccessibilitySettingsScreen(
-                                innerPadding = innerPadding
-                            )
+                            AccessibilitySettingsScreen(innerPadding = innerPadding)
                         }
-
+                        composable(SettingsScreens.ABOUT) {
+                            AboutScreen(innerPadding = innerPadding)
+                        }
+                        composable(SettingsScreens.DEBUG) {
+                            DebugScreen(innerPadding = innerPadding)
+                        }
                     }
                 }
             }
