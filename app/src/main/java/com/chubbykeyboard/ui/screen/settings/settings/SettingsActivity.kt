@@ -1,4 +1,4 @@
-package com.chubbykeyboard.ui.screen.settings.main
+package com.chubbykeyboard.ui.screen.settings.settings
 
 import android.annotation.SuppressLint
 import android.os.Bundle

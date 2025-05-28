@@ -1,4 +1,4 @@
-package com.chubbykeyboard.ui.screen.settings.main
+package com.chubbykeyboard.ui.screen.settings.settings
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box

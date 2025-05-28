@@ -16,7 +16,7 @@
         android:theme="@style/Theme.ChubbyKeyboard"
         tools:targetApi="31">
         <activity
-            android:name=".ui.screen.settings.main.SettingsActivity"
+            android:name=".ui.screen.settings.settings.SettingsActivity"
             android:exported="true"
             android:theme="@style/Theme.ChubbyKeyboard">
 <!--            <intent-filter>-->

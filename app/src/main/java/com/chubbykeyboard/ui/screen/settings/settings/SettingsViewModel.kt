@@ -1,4 +1,4 @@
-package com.chubbykeyboard.ui.screen.settings.main
+package com.chubbykeyboard.ui.screen.settings.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
