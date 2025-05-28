@@ -1,7 +1,11 @@
 package com.chubbykeyboard.service
 
 import android.inputmethodservice.InputMethodService
+import android.text.InputType
+import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodSubtype
 import androidx.annotation.CallSuper
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -52,6 +56,38 @@ class ChubbyIMEService : InputMethodService(), LifecycleOwner, ViewModelStoreOwn
             decorView.setViewTreeSavedStateRegistryOwner(this)
         }
         return view
+    }
+
+    @OptIn(ExperimentalStdlibApi::class)
+    override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
+        super.onStartInput(attribute, restarting)
+        //TODO handle event by input mapper
+        Log.d(
+            "ChubbyIMEService",
+            "onStartInput: attribute=${(attribute.inputType and InputType.TYPE_MASK_VARIATION).toHexString()}"
+        )
+    }
+
+    override fun onStartInputView(editorInfo: EditorInfo?, restarting: Boolean) {
+        super.onStartInputView(editorInfo, restarting)
+        //TODO handle event by input mapper
+    }
+
+    override fun onUpdateSelection(
+        oldSelStart: Int,
+        oldSelEnd: Int,
+        newSelStart: Int,
+        newSelEnd: Int,
+        candidatesStart: Int,
+        candidatesEnd: Int,
+    ) {
+        viewModel.keyEventHaptic()
+        super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, candidatesStart, candidatesEnd)
+    }
+
+    override fun onCurrentInputMethodSubtypeChanged(newSubtype: InputMethodSubtype?) {
+        super.onCurrentInputMethodSubtypeChanged(newSubtype)
+        Log.d("ChubbyIMEService", "onCurrentInputMethodSubtypeChanged: newSubtype=$newSubtype")
     }
 
     @CallSuper

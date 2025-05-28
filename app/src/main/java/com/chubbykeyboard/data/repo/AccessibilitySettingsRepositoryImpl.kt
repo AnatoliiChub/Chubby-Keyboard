@@ -13,7 +13,7 @@ class AccessibilitySettingsRepositoryImpl @Inject constructor(@ApplicationContex
 
     companion object {
         private const val DEBOUNCE_FIELD = "settings_debounce"
-        private const val DEFAULT_DEBOUNCE_VALUE = 200L
+        private const val DEFAULT_DEBOUNCE_VALUE = 0L
         private val Context.dataStore by preferencesDataStore(name = "settings_prefs")
         private val DEBOUNCE_KEY = longPreferencesKey(DEBOUNCE_FIELD)
     }

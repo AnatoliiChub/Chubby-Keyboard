@@ -9,6 +9,7 @@ import com.chubbykeyboard.domain.SwitchLanguageUseCase
 import com.chubbykeyboard.domain.keyboard.KeyBoardParameters
 import com.chubbykeyboard.domain.keyboard.KeyBoardState
 import com.chubbykeyboard.domain.keyboard.KeyboardType
+import com.chubbykeyboard.service.HapticManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,7 +25,8 @@ class ChubbyKeyboardViewModel(
     private val provideKeyMatrixUseCase: ProvideKeyMatrixUseCase,
     private val switchLanguageUseCase: SwitchLanguageUseCase,
     private val getCurrentSupportedLocaleUseCase: GetCurrentSupportedLocaleUseCase,
-    private val settingsRepo: AccessibilitySettingsRepositoryImpl
+    private val settingsRepo: AccessibilitySettingsRepositoryImpl,
+    private val hapticManager: HapticManager
 ) : ViewModel() {
 
     private val workDispatcher = Dispatchers.Default
@@ -69,27 +71,37 @@ class ChubbyKeyboardViewModel(
         }
     }
 
+    fun keyEventHaptic() {
+        hapticManager.keyEvent()
+    }
+
     private fun onToSymbolsPressed() {
+        hapticManager.functionalEvent()
         keyboardType.value = KeyboardType.SYMBOLS
     }
 
     private fun onToLettersPressed() {
+        hapticManager.functionalEvent()
         keyboardType.value = KeyboardType.LETTERS
     }
 
     private fun onCapsLockPressed() {
+        hapticManager.functionalEvent()
         isCapsLockActive.value = !isCapsLockActive.value
     }
 
     private fun onToAdditionalSymbolsPressed() {
+        hapticManager.functionalEvent()
         keyboardType.value = KeyboardType.ADDITIONAL_SYMBOLS
     }
 
     private fun onToNumPadPressed() {
+        hapticManager.functionalEvent()
         keyboardType.value = KeyboardType.NUMPAD
     }
 
     private fun onSwitchLanguagePressed() {
+        hapticManager.functionalEvent()
         viewModelScope.launch(workDispatcher) {
             currentLocale.value = switchLanguageUseCase.switchToNextLanguage(currentLocale.value)
         }

@@ -9,7 +9,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-
+//TODO needs to be updated to look well for the settings activity
 private val DarkColorScheme = darkColorScheme(
     primary = Dark.Primary,
     onPrimary = Dark.OnPrimary,
