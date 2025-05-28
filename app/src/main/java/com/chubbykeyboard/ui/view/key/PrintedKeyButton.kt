@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -62,7 +62,7 @@ fun PrintedKeyButton(
             .clip(shape)
             .debounceCombinedClickable(
                 interactionSource = interactionSource,
-                indication = rememberRipple(true, color = textColor.copy(alpha = RippleAlpha)),
+                indication = ripple(true, color = textColor.copy(alpha = RippleAlpha)),
                 debounceInterval = debounceInterval,
                 onLongClick = { longPressed.value = true },
                 onClick = { onPrintedKeyPressed(ctx, key.symbol, isShiftedParam) })

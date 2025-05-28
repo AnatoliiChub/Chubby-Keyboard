@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -46,7 +46,7 @@ fun BaseFunctionalButton(
             .clip(shape)
             .debounceClickable(
                 interactionSource = interactionSource,
-                indication = rememberRipple(true, color = textColor.copy(alpha = RippleAlpha)),
+                indication = ripple(true, color = textColor.copy(alpha = RippleAlpha)),
                 debounceInterval = debounceInterval,
                 onClick = onClick
             )
