@@ -1,0 +1,184 @@
+{
+  "matrix": [
+    [
+      {
+        "isCapital": false,
+        "letter": "й"
+      },
+      {
+        "isCapital": false,
+        "letter": "ц"
+      },
+      {
+        "isCapital": false,
+        "letter": "у"
+      },
+      {
+        "isCapital": false,
+        "letter": "к"
+      },
+      {
+        "isCapital": false,
+        "letter": "е",
+        "alternatives": "ё"
+      },
+      {
+        "isCapital": false,
+        "letter": "н"
+      },
+      {
+        "isCapital": false,
+        "letter": "г"
+      },
+      {
+        "isCapital": false,
+        "letter": "ш"
+      },
+      {
+        "isCapital": false,
+        "letter": "щ"
+      },
+      {
+        "isCapital": false,
+        "letter": "з"
+      },
+      {
+        "isCapital": false,
+        "letter": "х"
+      },
+      {
+        "isCapital": false,
+        "letter": "ї"
+      }
+    ],
+    [
+      {
+        "isCapital": false,
+        "letter": "ф"
+      },
+      {
+        "isCapital": false,
+        "letter": "і"
+      },
+      {
+        "isCapital": false,
+        "letter": "в"
+      },
+      {
+        "isCapital": false,
+        "letter": "а"
+      },
+      {
+        "isCapital": false,
+        "letter": "п"
+      },
+      {
+        "isCapital": false,
+        "letter": "р"
+      },
+      {
+        "isCapital": false,
+        "letter": "о"
+      },
+      {
+        "isCapital": false,
+        "letter": "л"
+      },
+      {
+        "isCapital": false,
+        "letter": "д"
+      },
+      {
+        "isCapital": false,
+        "letter": "ж"
+      },
+      {
+        "isCapital": false,
+        "letter": "є",
+        "alternatives": "э"
+      },
+      {
+        "isCapital": false,
+        "letter": "\u0027",
+        "alternatives": "ʼ"
+      }
+    ],
+    [
+      {
+        "isCapsLock": false,
+        "function": "CapsLock",
+        "label": "⇧"
+      },
+      {
+        "isCapital": false,
+        "letter": "я"
+      },
+      {
+        "isCapital": false,
+        "letter": "ч"
+      },
+      {
+        "isCapital": false,
+        "letter": "с"
+      },
+      {
+        "isCapital": false,
+        "letter": "м"
+      },
+      {
+        "isCapital": false,
+        "letter": "и"
+      },
+      {
+        "isCapital": false,
+        "letter": "т"
+      },
+      {
+        "isCapital": false,
+        "letter": "ь",
+        "alternatives": "ъы"
+      },
+      {
+        "isCapital": false,
+        "letter": "б"
+      },
+      {
+        "isCapital": false,
+        "letter": "ю"
+      },
+      {
+        "isCapital": false,
+        "letter": "ґ"
+      },
+      {
+        "function": "Backspace",
+        "label": "⌫"
+      }
+    ],
+    [
+      {
+        "function": "ToSymbols",
+        "label": "?123"
+      },
+      {
+        "symbol": ","
+      },
+      {
+        "function": "SwitchLanguage",
+        "label": "🌐︎"
+      },
+      {
+        "function": "Space",
+        "label": "Українська"
+      },
+      {
+        "symbol": ".",
+        "alternatives": "&%+\"-:'@;/)(#!?"
+      },
+      {
+        "function": "Enter",
+        "label": "⏎"
+      }
+    ]
+  ]
+}

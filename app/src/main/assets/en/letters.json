@@ -1,0 +1,129 @@
+{
+  "matrix": [
+    [
+      {
+        "letter": "q"
+      },
+      {
+        "letter": "w"
+      },
+      {
+        "letter": "e",
+        "alternatives": "èēêëé"
+      },
+      {
+        "letter": "r"
+      },
+      {
+        "letter": "t"
+      },
+      {
+        "letter": "y"
+      },
+      {
+        "letter": "u",
+        "alternatives": "ûūüùú"
+      },
+      {
+        "letter": "i",
+        "alternatives": "îìïīí"
+      },
+      {
+        "letter": "o",
+        "alternatives": "õōøœòöôó"
+      },
+      {
+        "letter": "p"
+      }
+    ],
+    [
+      {
+        "letter": "a",
+        "alternatives": "àáâäæãåā"
+      },
+      {
+        "letter": "s",
+        "alternatives": "ß"
+      },
+      {
+        "letter": "d"
+      },
+      {
+        "letter": "f"
+      },
+      {
+        "letter": "g"
+      },
+      {
+        "letter": "h"
+      },
+      {
+        "letter": "j"
+      },
+      {
+        "letter": "k"
+      },
+      {
+        "letter": "l"
+      }
+    ],
+    [
+      {
+        "function": "CapsLock",
+        "label": "⇧"
+      },
+      {
+        "letter": "z"
+      },
+      {
+        "letter": "x"
+      },
+      {
+        "letter": "c",
+        "alternatives": "ç"
+      },
+      {
+        "letter": "v"
+      },
+      {
+        "letter": "b"
+      },
+      {
+        "letter": "n",
+        "alternatives": "ñ"
+      },
+      {
+        "letter": "m"
+      },
+      {
+        "function": "Backspace",
+        "label": "⌫"
+      }
+    ],
+    [
+      {
+        "function": "ToSymbols",
+        "label": "?123"
+      },
+      {
+        "symbol": ","
+      },
+      {
+        "function": "SwitchLanguage",
+        "label": "🌐︎"
+      },
+      {
+        "function": "Space",
+        "label": "English"
+      },
+      {
+        "symbol": ".",
+        "alternatives": "&%+\"-:'@;/)(#!?"
+      },
+      {
+        "function": "Enter",
+        "label": "⏎"
+      }
+    ]
+  ]
+}

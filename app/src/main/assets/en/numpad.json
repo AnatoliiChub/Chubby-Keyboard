@@ -1,0 +1,95 @@
+{
+  "matrix": [
+    [
+      {
+        "symbol": "1"
+      },
+      {
+        "symbol": "2"
+      },
+      {
+        "symbol": "3"
+      },
+      {
+        "symbol": "%"
+      }
+    ],
+    [
+      {
+        "symbol": "4"
+      },
+      {
+        "symbol": "5"
+      },
+      {
+        "symbol": "6"
+      },
+      {
+        "function": "Space",
+        "label": "\u2423"
+      }
+    ],
+    [
+      {
+        "symbol": "7"
+      },
+      {
+        "symbol": "8"
+      },
+      {
+        "symbol": "9"
+      },
+      {
+        "function": "Backspace",
+        "label": "⌫"
+      }
+    ],
+    [
+      {
+        "symbol": ","
+      },
+      {
+        "function": "ToSymbols",
+        "label": "!?#"
+      },
+      {
+        "symbol": "0"
+      },
+      {
+        "symbol": "="
+      },
+      {
+        "symbol": ".",
+        "alternatives": "…"
+      },
+      {
+        "function": "Enter",
+        "label": "⏎"
+      }
+    ]
+  ],
+  "additionalOptions": [
+    {
+      "symbol": "+"
+    },
+    {
+      "symbol": "-"
+    },
+    {
+      "symbol": "*"
+    },
+    {
+      "symbol": "/"
+    },
+    {
+      "symbol": "("
+    },
+    {
+      "symbol": ")"
+    }
+  ],
+  "additionalButton": {
+    "function": "ToLetters",
+    "label": "ABC"
+  }
+}

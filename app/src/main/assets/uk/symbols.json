@@ -1,0 +1,145 @@
+{
+  "matrix": [
+    [
+      {
+        "symbol": "1",
+        "alternatives": "¹"
+      },
+      {
+        "symbol": "2",
+        "alternatives": "²"
+      },
+      {
+        "symbol": "3",
+        "alternatives": "³"
+      },
+      {
+        "symbol": "4",
+        "alternatives": "⁴"
+      },
+      {
+        "symbol": "5",
+        "alternatives": "⁵"
+      },
+      {
+        "symbol": "6",
+        "alternatives": "⁶"
+      },
+      {
+        "symbol": "7",
+        "alternatives": "⁷"
+      },
+      {
+        "symbol": "8",
+        "alternatives": "⁸"
+      },
+      {
+        "symbol": "9",
+        "alternatives": "⁹"
+      },
+      {
+        "symbol": "0",
+        "alternatives": "∅ⁿ⁰"
+      }
+    ],
+    [
+      {
+        "symbol": "@"
+      },
+      {
+        "symbol": "#",
+        "alternatives": "№"
+      },
+      {
+        "symbol": "₴",
+        "alternatives": "€₹¥₱$£¢"
+      },
+      {
+        "symbol": "_"
+      },
+      {
+        "symbol": "&"
+      },
+      {
+        "symbol": "-",
+        "alternatives": "—−—−"
+      },
+      {
+        "symbol": "+",
+        "alternatives": "±"
+      },
+      {
+        "symbol": "(",
+        "alternatives": "[{<"
+      },
+      {
+        "symbol": ")",
+        "alternatives": "]}>"
+      },
+      {
+        "symbol": "/"
+      }
+    ],
+    [
+      {
+        "function": "ToAdditionalSymbols",
+        "label": "=\\<"
+      },
+      {
+        "symbol": "*",
+        "alternatives": "★†‡"
+      },
+      {
+        "symbol": "\"",
+        "alternatives": "“„«»"
+      },
+      {
+        "symbol": "'",
+        "alternatives": "‘’‹›"
+      },
+      {
+        "symbol": ":"
+      },
+      {
+        "symbol": ";"
+      },
+      {
+        "symbol": "!",
+        "alternatives": "¡"
+      },
+      {
+        "symbol": "?",
+        "alternatives": "¿‽"
+      },
+      {
+        "function": "Backspace",
+        "label": "⌫"
+      }
+    ],
+    [
+      {
+        "function": "ToLetters",
+        "label": "АБВ"
+      },
+      {
+        "symbol": ","
+      },
+      {
+        "function": "ToNumPad",
+        "label": "12\n34"
+      },
+      {
+        "function": "Space",
+        "label": "Українська"
+      },
+      {
+        "symbol": ".",
+        "alternatives": "…"
+      },
+      {
+        "function": "Enter",
+        "label": "⏎"
+      }
+    ]
+  ]
+}
