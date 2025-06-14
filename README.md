@@ -7,7 +7,7 @@ A system component app that provides a custom keyboard for Android OS.
 - **Supported Languages:** English, Ukrainian
 - **Layouts:** Alphabetic, Numeric, Symbols
 - **Alternative Symbols:** Quick access to alternative characters
-- **Haptic Feedback:** Optional vibration on key press
+- **Haptic Feedback**
 - **Debounce Option:** Prevents accidental double key presses
 - **Debug Screen:** Access debug options from Settings to debug [InputTypes](https://developer.android.com/reference/android/text/InputType) in the future.
   _Note: [InputTypes](https://developer.android.com/reference/android/text/InputType) are not yet
